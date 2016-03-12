@@ -24,7 +24,8 @@
     }
   }
   Medida.constructor = Medida;
-  
+  Medida.measures = Medida.measures || {};
+
   Medida.match = function(valor)
   {
     console.log("match_regexp");
@@ -45,3 +46,35 @@
     console.log("Res->"+res);
     return res;
   }
+
+  Medida.convertir = function(valor) {
+    //Medidas
+    var measures = Medida.measures;
+    measures.c = Celsius;
+    measures.k = Kelvin;
+    measures.f = Farenheit;
+    measures.km = Kilometro;
+    measures.m = Metro;
+    measures.cm = Centimetro;
+    measures.in = Pulgada;
+    measures.m3 = Metro3;
+
+    console.log("Measures:"+measures);
+    var match = Medida.match(valor);
+    if (match) {
+      var numero = match.valor,
+          tipo   = match.tipo,
+          destino = match.to;
+      console.log("Numero:"+numero+",Tipo:"+tipo+",Destino:"+destino);
+      try {
+        var source = new measures[tipo](numero);  // new Fahrenheit(32)
+        var target = "to"+measures[destino].name; // "toCelsius"
+        return source[target]().toFixed(2) + " "+measures[destino].name; // "0 Celsius"
+      }
+      catch(err) {
+        return 'Desconozco como convertir desde "'+tipo+'" hasta "'+destino+'"';
+      }
+    }
+    else
+      return "Introduzca una temperatura valida: 330e-1 F to C";
+  };
