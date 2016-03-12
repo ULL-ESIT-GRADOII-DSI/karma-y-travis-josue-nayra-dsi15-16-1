@@ -72,7 +72,7 @@
       try {
         var source = new measures[tipo](numero);  // new Fahrenheit(32)
         var target = "to"+measures[destino].name; // "toCelsius"
-        return source[target]().toFixed(2) + " "+measures[destino].name; // "0 Celsius"
+        return source[target]().valor.toFixed(2) + " "+measures[destino].name; // "0 Celsius"
       }
       catch(err) {
         return 'Desconozco como convertir desde "'+tipo+'" hasta "'+destino+'"';
@@ -274,7 +274,7 @@
     }
     Pulgada.prototype = new Distancia;
     Pulgada.prototype.constructor = Pulgada;
-    Pulgada.prototype.toCm = function()
+    Pulgada.prototype.toCentimetro = function()
     {
         return this.valor / 0.39370;
     }
@@ -289,15 +289,19 @@
     Metro3.prototype.constructor = Metro3;
     Metro3.prototype.toLitro = function()
     {
-        return this.valor * 1000;
+        return new Metro3(this.valor * 1000);
     }
-    Metro3.prototype.toCm3 = function()
+    Metro3.prototype.toCentimetro3 = function()
     {
-        return this.valor * 1000000;
+        return new Centimetro3(his.valor * 1000000);
     }
-    Metro3.prototype.toMm3 = function()
+    Metro3.prototype.toMilimetro3 = function()
     {
-        return this.valor * 1000000000;
+        return new Milimetro3(this.valor * 1000000000);
+    }
+    Metro3.prototype.toKilometro3 = function()
+    {
+        return new Kilometro3(this.valor / 1000000000);
     }
   // ----------------------------------------------------- //
   function Centimetro3(valor)
