@@ -30,7 +30,6 @@
   {
     console.log("match_regexp");
     console.log("valor->"+valor);
-    //var regexp = /^\s*([-+]?\d+(?:\.\d*)?(?:e[+-]?\d+)?)\s*([kmc]?m(3)?|(in)|k([e]|(e)[l]?|(el)[v]?|(elv)[i]?|(elvi)[n]?)?|[c]([e]|[e][l]?|(el)[s]?|(els)[i]?|(elsi)[u]?|(elsiu)[s]?)?|[f]([a]|[a][r]?|(ar)[e]?|(are)[n]?|(aren)[h]?|(arenh)[e]?|(arenhe)[i]?|(arenhei)[t]?)?)\s*(to)?\s+([c]([e]|[e][l]?|(el)[s]?|(els)[i]?|(elsi)[u]?|(elsiu)[s]?)?|[f]([a]|[a][r]?|(ar)[e]?|(are)[n]?|(aren)[h]?|(arenh)[e]?|(arenhe)[i]?|(arenhei)[t]?)?|k([e]|(e)[l]?|(el)[v]?|(elv)[i]?|(elvi)[n]?)?|[kmc]?m(3)?|l(i(t(r(o(s)?)?)?)?)?|(in))$/i;
     /*global XRegExp */
     var regexp = XRegExp('^(\\s*)                                         ' +
                     '(?<valor> [-+]?[0-9]+(?:\\.[0-9]+)?(?:e[+-]?[0-9]+)?) ' +
@@ -57,7 +56,11 @@
     measures.m = Metro;
     measures.cm = Centimetro;
     measures.in = Pulgada;
+    measures.km3 = Kilometro3;
     measures.m3 = Metro3;
+    measures.cm3 = Centimetro3;
+    measures.mm3 = Milimetro3;
+    measures.l = Litro;
 
     console.log("Measures:"+measures);
     var match = Medida.match(valor);
@@ -244,6 +247,28 @@
 
   // ----------------------------------------------------- //
 
+  function Milimetro(valor)
+  {
+    Distancia.call(this,valor,'mm');
+  }
+  Milimetro.prototype = new Distancia;
+  Milimetro.prototype.constructor = Milimetro;
+  Milimetro.prototype.toKilometro = function()
+  {
+    return new Kilometro(this.valor/1000000);
+  }
+  Milimetro.prototype.toCentimetro = function()
+  {
+    return new Centimetro(this.valor/10);
+  }
+  Milimetro.prototype.toMetro = function()
+  {
+    return new Metro(this.valor/1000);
+  }
+
+
+  // ----------------------------------------------------- //
+
     function Pulgada(valor){
       Distancia.call(this,valor,'in');
     }
@@ -275,3 +300,68 @@
         return this.valor * 1000000000;
     }
   // ----------------------------------------------------- //
+  function Centimetro3(valor)
+  {
+    Volumen.call(this,valor,'cm3');
+  }
+  Centimetro3.prototype = new Distancia;
+  Centimetro3.prototype.constructor = Centimetro3;
+  Centimetro3.prototype.toKilometro3 = function()
+  {
+    return new Kilometro3(this.valor/1000000000000000);
+  }
+  Centimetro3.prototype.toMilimetro3 = function()
+  {
+    return new Centimetro3(this.valor * 1000);
+  }
+  Centimetro3.prototype.toMetro3 = function()
+  {
+    return new Metro3(this.valor/1000000);
+  }
+
+  // ----------------------------------------------------- //
+
+
+  function Milimetro3(valor)
+  {
+    Volumen.call(this,valor,'cm3');
+  }
+  Milimetro3.prototype = new Distancia;
+  Milimetro3.prototype.constructor = Milimetro3;
+  Milimetro3.prototype.toKilometro3 = function()
+  {
+    return new Kilometro3(this.valor/1000000000000000000);
+  }
+  Milimetro3.prototype.toCentimetro3 = function()
+  {
+    return new Centimetro3(this.valor / 1000);
+  }
+  Milimetro3.prototype.toMetro3 = function()
+  {
+    return new Metro3(this.valor/1000000000);
+  }
+
+  // ----------------------------------------------------- //
+
+  function Litro(valor)
+  {
+    Volumen.call(this,valor,'litro');
+  }
+  Litro.prototype = new Volumen;
+  Litro.prototype.constructor = Litro;
+  Litro.prototype.toMetro3 = function()
+  {
+    return new Metro3(this.valor/1000);
+  }
+  Litro.prototype.toKilometro3 = function()
+  {
+    return new Kilometro3(this.valor/1000000000000);
+  }
+  Litro.prototype.toCentimetro3 = function()
+  {
+    return new Centimetro3(this.valor * 1000);
+  }
+  Litro.prototype.toMetro3 = function()
+  {
+    return new Metro3(this.valor/1000);
+  }
