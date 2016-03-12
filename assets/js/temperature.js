@@ -33,8 +33,6 @@
 
   function Celsius(valor)
   {
-    var c_tof = 0;
-    var c_tok = 0;
     console.log("Accedo a clase Celsius");
     Temperatura.call(this,valor,'c');
   }
@@ -42,19 +40,15 @@
   Celsius.prototype.constructor = Celsius;
   Celsius.prototype.toFarenheit = function()
   {
-    var c_tof = (this.valor * 9/5) + 32;
-    return c_tof;
+    return new Farenheit((this.valor * 9/5) + 32);
   }
   Celsius.prototype.toKelvin = function()
   {
-    var c_tok = (this.valor + 273.15);
-    return c_tok;
+    return new Kelvin(this.valor + 273.15);
   }
 // ----------------------------------------------------- //
   function Farenheit(valor)
   {
-    var f_toC = 0;
-    var f_toK = 0;
     console.log("Accedo a la clase Fahrenheit.");
     Temperatura.call(this,valor,'f');
   }
@@ -62,21 +56,17 @@
   Farenheit.prototype.constructor = Farenheit;
   Farenheit.prototype.toCelsius = function()
   {
-      var f_toC = (this.valor - 32) * 5/9;
-      return f_toC;
+      return new Celsius((this.valor - 32) * 5/9);
   }
   Farenheit.prototype.toKelvin = function()
   {
-    var f_toK = (this.toCelsius() + 273.15);
-    return f_toK;
+    return new Kelvin(this.toCelsius() + 273.15);
   }
 
 // ----------------------------------------------------- //
 
   function Kelvin(valor)
   {
-    var k_toC = 0;
-    var k_toF = 0;
     console.log("Accedo a clase Kelvin");
     Temperatura.call(this,valor,'k');
   }
@@ -84,14 +74,13 @@
   Kelvin.prototype.constructor = Kelvin;
   Kelvin.prototype.toCelsius = function()
   {
-    var k_toC = (this.valor - 273.15);
-    return k_toC;
+    return new Celsius(this.valor - 273.15);
   }
   Kelvin.prototype.toFarenheit = function()
   {
-    var k_toF = (this.toCelsius() * 9/5) + 32;
-    return k_toF;
+    return new Farenheit((this.toCelsius().valor * 9/5) + 32);
   }
+  
 // ----------------------------------------------------- //
 
   function Kilometro(valor)
@@ -103,13 +92,13 @@
   Kilometro.prototype.constructor = Kilometro;
   Kilometro.prototype.toM = function()
   {
-    return this.valor * 1000;
+    return new Metro(this.valor * 1000);
   }
-  Kilometro.prototype.toCm = function()
+  Kilometro.prototype.toCentimetro = function()
   {
-    return this.valor * 10000;
+    return new Centimetro(this.valor * 10000);
   }
-  Kilometro.prototype.toMm = function()
+  Kilometro.prototype.toMilimetro = function()
   {
     return this.valor * 1000000;
   }
@@ -123,21 +112,21 @@
   }
   Centimetro.prototype = new Distancia;
   Centimetro.prototype.constructor = Centimetro;
-  Centimetro.prototype.toM = function()
+  Centimetro.prototype.toMetro = function()
   {
-    return this.valor / 100;
+    return new Metro(this.valor / 100);
   }
-  Centimetro.prototype.toKm = function()
+  Centimetro.prototype.toKilometro = function()
   {
-    return this.valor / 10000;
+    return new Kilometro(this.valor / 10000);
   }
-  Centimetro.prototype.toMm = function()
+  Centimetro.prototype.toMilimetro = function()
   {
     return this.valor * 10;
   }
-  Centimetro.prototype.toIn = function()
+  Centimetro.prototype.toInch = function()
   {
-    return this.valor * 0.39370;
+    return new Pulgada(this.valor * 0.39370);
   }
 
 // ----------------------------------------------------- //
@@ -148,15 +137,15 @@
   }
   Metro.prototype = new Distancia;
   Metro.prototype.constructor = Metro;
-  Metro.prototype.toKm = function()
+  Metro.prototype.toKilometro = function()
   {
-    return this.valor / 1000;
+    return new Kilometro(this.valor / 1000);
   }
-  Metro.prototype.toCm = function()
+  Metro.prototype.toCentimetro = function()
   {
-    return this.valor * 100;
+    return new Centimetro(this.valor * 100);
   }
-  Metro.prototype.toMm = function()
+  Metro.prototype.toMilimetro = function()
   {
     return this.valor * 1000;
   }
@@ -168,7 +157,7 @@
   }
   Pulgada.prototype = new Distancia;
   Pulgada.prototype.constructor = Pulgada;
-  Pulgada.prototype.toCm = function()
+  Pulgada.prototype.toCentimetro = function()
   {
       return this.valor / 0.39370;
   }
@@ -185,11 +174,11 @@
   {
       return this.valor * 1000;
   }
-  Metro3.prototype.toCm3 = function()
+  Metro3.prototype.toCentimetro3 = function()
   {
       return this.valor * 1000000;
   }
-  Metro3.prototype.toMm3 = function()
+  Metro3.prototype.toMilimetro3 = function()
   {
       return this.valor * 1000000000;
   }

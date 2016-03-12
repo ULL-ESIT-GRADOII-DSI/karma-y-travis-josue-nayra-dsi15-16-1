@@ -4,7 +4,8 @@
 
 ## Conversor de temperatura en JavaScript de grados Celsius, Fahrenheit y Kelvin.
 
-Este repositorio aloja la práctica de conversión de tipos, realizada con html, css y javascript, usando POO y haciendo uso de la herencia en javascript.
+Este repositorio aloja la práctica de conversión de tipos, realizada con html, css y javascript, usando POO y haciendo uso de la herencia en javascript. 
+Se ha realizado una mejora en el código, eliminando los Switch Smell y las debilidades del mismo.
 
 ###Requisitos: 
 
@@ -15,6 +16,7 @@ Modificar el código de la práctica anterior (OOP en js) para que cumpla:
 * Destribuir las clases en ficheros separados de manera racional.
 * Constructor de Medida para poder llamarse con un sólo argumento.
 * Factorización del uso de la expresión regular.
+* Los métodos (toCelsius, toFarenheit,...) deben devolver un objeto.
 
 
 ### Enlace al campus de la asignatura
