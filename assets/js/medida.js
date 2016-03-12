@@ -304,24 +304,47 @@
         return new Kilometro3(this.valor / 1000000000);
     }
   // ----------------------------------------------------- //
-  function Centimetro3(valor)
-  {
-    Volumen.call(this,valor,'cm3');
-  }
-  Centimetro3.prototype = new Distancia;
-  Centimetro3.prototype.constructor = Centimetro3;
-  Centimetro3.prototype.toKilometro3 = function()
-  {
-    return new Kilometro3(this.valor/1000000000000000);
-  }
-  Centimetro3.prototype.toMilimetro3 = function()
-  {
-    return new Centimetro3(this.valor * 1000);
-  }
-  Centimetro3.prototype.toMetro3 = function()
-  {
-    return new Metro3(this.valor/1000000);
-  }
+    function Centimetro3(valor)
+    {
+        Volumen.call(this,valor,'cm3');
+    }
+    Centimetro3.prototype = new Distancia;
+    Centimetro3.prototype.constructor = Centimetro3;
+    Centimetro3.prototype.toKilometro3 = function()
+    {
+        return new Kilometro3(this.valor/1000000000000000);
+    }
+    Centimetro3.prototype.toMilimetro3 = function()
+    {
+        return new Milimetro3(this.valor * 1000);
+    }
+    Centimetro3.prototype.toMetro3 = function()
+    {
+        return new Metro3(this.valor/1000000);
+    }
+
+  // ----------------------------------------------------- //
+
+
+    function Kilometro3(valor)
+    {
+        Volumen.call(this,valor,'cm3');
+    }
+    Kilometro3.prototype = new Distancia;
+    Kilometro3.prototype.constructor = Kilometro3;
+    Kilometro3.prototype.toMilimetro3 = function()
+    {
+        return new Milimetro3(this.valor * 1000000000000000000);
+    }
+    Kilometro3.prototype.toCentimetro3 = function()
+    {
+        return new Centimetro3(this.valor * 1000000000000000);
+    }
+    Kilometro3.prototype.toMetro3 = function()
+    {
+        return new Metro3(this.valor * 1000000000);
+    }
+
 
   // ----------------------------------------------------- //
 
