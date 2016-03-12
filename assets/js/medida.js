@@ -361,7 +361,3 @@
   {
     return new Centimetro3(this.valor * 1000);
   }
-  Litro.prototype.toMetro3 = function()
-  {
-    return new Metro3(this.valor/1000);
-  }
