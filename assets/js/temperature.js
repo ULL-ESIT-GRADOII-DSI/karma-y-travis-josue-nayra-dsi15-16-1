@@ -152,14 +152,15 @@
 
 // ----------------------------------------------------- //
 
-  function Pulgada(valor){
+  function Pulgada(valor)
+  {
     Distancia.call(this,valor,'in');
   }
   Pulgada.prototype = new Distancia;
   Pulgada.prototype.constructor = Pulgada;
   Pulgada.prototype.toCentimetro = function()
   {
-      return this.valor / 0.39370;
+      return new Centrimetro(this.valor / 0.39370);
   }
 
 // ----------------------------------------------------- //
