@@ -160,15 +160,9 @@
   Pulgada.prototype.constructor = Pulgada;
   Pulgada.prototype.toCentimetro = function()
   {
-      return new Centrimetro(this.valor / 0.39370);
+      return new Centimetro(this.valor / 0.39370);
   }
 
-// ----------------------------------------------------- //
-
-  function Metro3(valor)
-  {
-    Volumen.call(this,valor,'metro cubico');
-  }
   Metro3.prototype = new Volumen;
   Metro3.prototype.constructor = Metro3;
   Metro3.prototype.toLitro = function()

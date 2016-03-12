@@ -72,7 +72,7 @@
       try {
         var source = new measures[tipo](numero);  // new Fahrenheit(32)
         var target = "to"+measures[destino].name; // "toCelsius"
-        return source[target]().valor.toFixed(2) + " "+measures[destino].name; // "0 Celsius"
+        return source[target]().toFixed(2) + " "+measures[destino].name; // "0 Celsius"
       }
       catch(err) {
         return 'Desconozco como convertir desde "'+tipo+'" hasta "'+destino+'"';
