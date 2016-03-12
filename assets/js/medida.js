@@ -35,11 +35,11 @@
     var regexp = XRegExp('^(\\s*)                                         ' +
                     '(?<valor> [-+]?[0-9]+(?:\\.[0-9]+)?(?:e[+-]?[0-9]+)?) ' +
                     '(\\s*)                                               ' +
-                    '(?<tipo> ([fck]|in|(k|m|c)?m(3)?))                   ' +
+                    '(?<tipo> [a-z])                                      ' +
                     '(\\s*)                                               ' +
                     '(to)?                                                ' +
                     '(\\s*)                                               ' +
-                    '(?<to> ([fck]|(k|m|c)?m(3)?|in|l))                   ' +
+                    '(?<to> [a-z])                                        ' +
                     '(\\s*)$','ix');
     //res = valor.match(regexp);
     var res = XRegExp.exec(valor,regexp);
