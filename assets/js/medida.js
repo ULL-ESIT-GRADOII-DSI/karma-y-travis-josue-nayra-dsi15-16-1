@@ -12,15 +12,19 @@
       else
       {
         var expresion;
-        expresion = match_regexp(valor);
+        var regexp = /^\s*([-+]?\d+(?:\.\d*)?\s*(?:e[+-]?\d+)?)\s*([a-z])+\s*$/i;
+        expresion = valor.match(regexp);
         console.log("Expresion:"+expresion);
-        var numero = expresion[1];
-        numero = parseFloat(numero);
-        var tipo = expresion[2];
-        tipo = tipo.toLowerCase();
-        this.valor = numero;
-        this.tipo = tipo;
-        console.log("Valor: " + this.valor + ", Tipo: " + this.tipo);
+        if(expresion)
+        {
+          var numero = expresion[1];
+          numero = parseFloat(numero);
+          var tipo = expresion[2];
+          tipo = tipo.toLowerCase();
+          this.valor = numero;
+          this.tipo = tipo;
+          console.log("Valor: " + this.valor + ", Tipo: " + this.tipo);
+        }
       }
     }
   }
@@ -87,7 +91,7 @@
           return numero + " " + destino;
         }
         else{
-          return 'Desconozco como convertir desde "'+tipo+'" hasta "'+destino+'"';  
+          return 'Desconozco como convertir desde "'+tipo+'" hasta "'+destino+'"';
         }
       }
     }
