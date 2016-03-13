@@ -4,6 +4,7 @@
       console.log("Entrando en main.js");
       var valor     = document.getElementById('convert').value,
           elemento  = document.getElementById('converted');
+      console.log("En medida: "+ Medida.convertir(valor));
       elemento.innerHTML = Medida.convertir(valor);
       return false;
   }

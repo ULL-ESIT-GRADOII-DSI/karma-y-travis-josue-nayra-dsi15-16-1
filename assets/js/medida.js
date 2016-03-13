@@ -34,11 +34,11 @@
     var regexp = XRegExp('^(\\s*)                                         ' +
                     '(?<valor> [-+]?[0-9]+(?:\\.[0-9]+)?(?:e[+-]?[0-9]+)?) ' +
                     '(\\s*)                                               ' +
-                    '(?<tipo> [a-z])                                      ' +
+                    '(?<tipo> [a-zA-Z]+)                                      ' +
                     '(\\s*)                                               ' +
                     '(to)?                                                ' +
                     '(\\s*)                                               ' +
-                    '(?<to> [a-z])                                        ' +
+                    '(?<to> [a-zA-Z]+)                                        ' +
                     '(\\s*)$','ix');
     //res = valor.match(regexp);
     var res = XRegExp.exec(valor,regexp);
@@ -55,6 +55,7 @@
     measures.km = Kilometro;
     measures.m = Metro;
     measures.cm = Centimetro;
+    measures.mm = Milimetro;
     measures.in = Pulgada;
     measures.km3 = Kilometro3;
     measures.m3 = Metro3;
@@ -68,11 +69,17 @@
       var numero = match.valor,
           tipo   = match.tipo,
           destino = match.to;
+      tipo = tipo.toLowerCase();
+      destino = destino.toLowerCase();
       console.log("Numero:"+numero+",Tipo:"+tipo+",Destino:"+destino);
       try {
         var source = new measures[tipo](numero);  // new Fahrenheit(32)
+        console.log("Source:"+source);
         var target = "to"+measures[destino].name; // "toCelsius"
-        return source[target]().toFixed(2) + " "+measures[destino].name; // "0 Celsius"
+        console.log("Target:"+target);
+        console.log("Return:"+source[target]());
+        return source[target]().valor + " "+measures[destino].name; // "0 Celsius"
+        //return source[target]() + " " + measures[destino].name;
       }
       catch(err) {
         return 'Desconozco como convertir desde "'+tipo+'" hasta "'+destino+'"';
@@ -131,8 +138,8 @@
     }
     Celsius.prototype.toKelvin = function()
     {
-      var c_tok = (this.valor + 273.15);
-      return c_tok;
+      var f_toK = (this.valor + 273.15);
+      return f_toK;
     }
   // ----------------------------------------------------- //
     function Farenheit(valor)
@@ -185,15 +192,15 @@
     }
     Kilometro.prototype = new Distancia;
     Kilometro.prototype.constructor = Kilometro;
-    Kilometro.prototype.toM = function()
+    Kilometro.prototype.toMetro = function()
     {
       return this.valor * 1000;
     }
-    Kilometro.prototype.toCm = function()
+    Kilometro.prototype.toCentimetro = function()
     {
-      return this.valor * 10000;
+      return this.valor * 100000;
     }
-    Kilometro.prototype.toMm = function()
+    Kilometro.prototype.toMilimetro = function()
     {
       return this.valor * 1000000;
     }
@@ -207,19 +214,19 @@
     }
     Centimetro.prototype = new Distancia;
     Centimetro.prototype.constructor = Centimetro;
-    Centimetro.prototype.toM = function()
+    Centimetro.prototype.toMetro = function()
     {
       return this.valor / 100;
     }
-    Centimetro.prototype.toKm = function()
+    Centimetro.prototype.toKilometro = function()
     {
       return this.valor / 10000;
     }
-    Centimetro.prototype.toMm = function()
+    Centimetro.prototype.toMilimetro = function()
     {
       return this.valor * 10;
     }
-    Centimetro.prototype.toIn = function()
+    Centimetro.prototype.toPulgada = function()
     {
       return this.valor * 0.39370;
     }
@@ -232,17 +239,21 @@
     }
     Metro.prototype = new Distancia;
     Metro.prototype.constructor = Metro;
-    Metro.prototype.toKm = function()
+    Metro.prototype.toKilometro = function()
     {
       return this.valor / 1000;
     }
-    Metro.prototype.toCm = function()
+    Metro.prototype.toCentimetro = function()
     {
       return this.valor * 100;
     }
-    Metro.prototype.toMm = function()
+    Metro.prototype.toMilimetro = function()
     {
       return this.valor * 1000;
+    }
+    Metro.prototype.toPulgada = function()
+    {
+      return this.toCentimetro() * 0.39370;
     }
 
   // ----------------------------------------------------- //
