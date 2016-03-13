@@ -77,12 +77,17 @@
         console.log("Source:"+source);
         var target = "to"+measures[destino].name; // "toCelsius"
         console.log("Target:"+target);
-        console.log("Return:"+source[target]());
+        console.log("Return:"+source[target]().valor);
         return source[target]().valor + " "+measures[destino].name; // "0 Celsius"
         //return source[target]() + " " + measures[destino].name;
       }
       catch(err) {
+        if (tipo == destino){
+          return numero + " " + destino;
+        }
+        else{
           return 'Desconozco como convertir desde "'+tipo+'" hasta "'+destino+'"';
+        }
       }
     }
     else
