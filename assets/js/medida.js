@@ -34,11 +34,11 @@
     var regexp = XRegExp('^(\\s*)                                         ' +
                     '(?<valor> [-+]?[0-9]+(?:\\.[0-9]+)?(?:e[+-]?[0-9]+)?) ' +
                     '(\\s*)                                               ' +
-                    '(?<tipo> [a-zA-Z]+)                                      ' +
+                    '(?<tipo> [a-zA-Z]+(3)?)                                      ' +
                     '(\\s*)                                               ' +
                     '(to)?                                                ' +
                     '(\\s*)                                               ' +
-                    '(?<to> [a-zA-Z]+)                                        ' +
+                    '(?<to> [a-zA-Z]+(3)?)                                        ' +
                     '(\\s*)$','ix');
     //res = valor.match(regexp);
     var res = XRegExp.exec(valor,regexp);
@@ -134,12 +134,12 @@
     Celsius.prototype.toFarenheit = function()
     {
       var c_tof = (this.valor * 9/5) + 32;
-      return c_tof;
+      return new Farenheit(c_tof);
     }
     Celsius.prototype.toKelvin = function()
     {
       var f_toK = (this.valor + 273.15);
-      return f_toK;
+      return new Kelvin(f_toK);
     }
   // ----------------------------------------------------- //
     function Farenheit(valor)
@@ -154,12 +154,12 @@
     Farenheit.prototype.toCelsius = function()
     {
         var f_toC = (this.valor - 32) * 5/9;
-        return f_toC;
+        return new Celsius(f_toC);
     }
     Farenheit.prototype.toKelvin = function()
     {
-      var f_toK = (this.toCelsius() + 273.15);
-      return new Celsius(f_toK);
+      var f_toK = (this.toCelsius().valor + 273.15);
+      return new Kelvin(f_toK);
     }
 
   // ----------------------------------------------------- //
@@ -176,12 +176,12 @@
     Kelvin.prototype.toCelsius = function()
     {
       var k_toC = (this.valor - 273.15);
-      return k_toC;
+      return new Celsius(k_toC);
     }
     Kelvin.prototype.toFarenheit = function()
     {
-      var k_toF = (this.toCelsius() * 9/5) + 32;
-      return k_toF;
+      var k_toF = (this.toCelsius().valor * 9/5) + 32;
+      return new Farenheit(k_toF);
     }
   // ----------------------------------------------------- //
 
@@ -194,15 +194,19 @@
     Kilometro.prototype.constructor = Kilometro;
     Kilometro.prototype.toMetro = function()
     {
-      return this.valor * 1000;
+      return new Metro(this.valor * 1000);
     }
     Kilometro.prototype.toCentimetro = function()
     {
-      return this.valor * 100000;
+      return new Kilometro(this.valor * 100000);
     }
     Kilometro.prototype.toMilimetro = function()
     {
-      return this.valor * 1000000;
+      return new Milimetro(this.valor * 1000000);
+    }
+    Kilometro.prototype.toPulgada = function()
+    {
+      return new Pulgada(this.toCentimetro().valor * 0.39370);
     }
 
   // ----------------------------------------------------- //
@@ -216,19 +220,19 @@
     Centimetro.prototype.constructor = Centimetro;
     Centimetro.prototype.toMetro = function()
     {
-      return this.valor / 100;
+      return new Metro(this.valor / 100);
     }
     Centimetro.prototype.toKilometro = function()
     {
-      return this.valor / 10000;
+      return new Kilometro(this.valor / 10000);
     }
     Centimetro.prototype.toMilimetro = function()
     {
-      return this.valor * 10;
+      return new Milimetro(this.valor * 10);
     }
     Centimetro.prototype.toPulgada = function()
     {
-      return this.valor * 0.39370;
+      return new Pulgada(this.valor * 0.39370);
     }
 
   // ----------------------------------------------------- //
@@ -241,19 +245,19 @@
     Metro.prototype.constructor = Metro;
     Metro.prototype.toKilometro = function()
     {
-      return this.valor / 1000;
+      return new Kilometro(this.valor / 1000);
     }
     Metro.prototype.toCentimetro = function()
     {
-      return this.valor * 100;
+      return new Centimetro(this.valor * 100);
     }
     Metro.prototype.toMilimetro = function()
     {
-      return this.valor * 1000;
+      return new Milimetro(this.valor * 1000);
     }
     Metro.prototype.toPulgada = function()
     {
-      return this.toCentimetro() * 0.39370;
+      return new Pulgada(this.toCentimetro().valor * 0.39370);
     }
 
   // ----------------------------------------------------- //
@@ -276,7 +280,10 @@
   {
     return new Metro(this.valor/1000);
   }
-
+  Milimetro.prototype.toPulgada = function()
+  {
+    return new Pulgada(this.toCentimetro().valor * 0.39370);
+  }
 
   // ----------------------------------------------------- //
 
@@ -287,7 +294,7 @@
     Pulgada.prototype.constructor = Pulgada;
     Pulgada.prototype.toCentimetro = function()
     {
-        return this.valor / 0.39370;
+        return new Centimetro(this.valor / 0.39370);
     }
 
   // ----------------------------------------------------- //
@@ -304,7 +311,7 @@
     }
     Metro3.prototype.toCentimetro3 = function()
     {
-        return new Centimetro3(his.valor * 1000000);
+        return new Centimetro3(this.valor * 1000000);
     }
     Metro3.prototype.toMilimetro3 = function()
     {
@@ -333,6 +340,10 @@
     {
         return new Metro3(this.valor/1000000);
     }
+    Centimetro3.prototype.toLitro = function()
+    {
+        return new Litro(this.valor / 1000);
+    }
 
   // ----------------------------------------------------- //
 
@@ -355,6 +366,11 @@
     {
         return new Metro3(this.valor * 1000000000);
     }
+    Kilometro3.prototype.toLitro = function()
+    {
+        return new Litro(this.valor * 1000000000000);
+    }
+
 
 
   // ----------------------------------------------------- //
@@ -378,7 +394,10 @@
   {
     return new Metro3(this.valor/1000000000);
   }
-
+  Milimetro3.prototype.toLitro = function()
+  {
+      return new Litro(this.valor / 1000000);
+  }
   // ----------------------------------------------------- //
 
   function Litro(valor)
@@ -398,4 +417,8 @@
   Litro.prototype.toCentimetro3 = function()
   {
     return new Centimetro3(this.valor * 1000);
+  }
+  Litro.prototype.toMilimetro3 = function()
+  {
+    return new Milimetro3(this.valor * 1000000);
   }
