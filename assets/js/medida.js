@@ -159,7 +159,7 @@
     Farenheit.prototype.toKelvin = function()
     {
       var f_toK = (this.toCelsius() + 273.15);
-      return f_toK;
+      return new Celsius(f_toK);
     }
 
   // ----------------------------------------------------- //
