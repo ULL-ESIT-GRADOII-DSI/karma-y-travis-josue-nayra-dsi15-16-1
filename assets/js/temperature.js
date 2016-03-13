@@ -152,22 +152,17 @@
 
 // ----------------------------------------------------- //
 
-  function Pulgada(valor){
+  function Pulgada(valor)
+  {
     Distancia.call(this,valor,'in');
   }
   Pulgada.prototype = new Distancia;
   Pulgada.prototype.constructor = Pulgada;
   Pulgada.prototype.toCentimetro = function()
   {
-      return this.valor / 0.39370;
+      return new Centimetro(this.valor / 0.39370);
   }
 
-// ----------------------------------------------------- //
-
-  function Metro3(valor)
-  {
-    Volumen.call(this,valor,'metro cubico');
-  }
   Metro3.prototype = new Volumen;
   Metro3.prototype.constructor = Metro3;
   Metro3.prototype.toLitro = function()

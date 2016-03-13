@@ -7,7 +7,9 @@
 Este repositorio aloja la práctica de conversión de tipos, realizada con html, css y javascript, usando POO y haciendo uso de la herencia en javascript. 
 Se ha realizado una mejora en el código, eliminando los Switch Smell y las debilidades del mismo.
 
-###Requisitos: 
+### Desarrollo de la práctica en la rama gh-pages.
+
+### Requisitos: 
 
 Modificar el código de la práctica anterior (OOP en js) para que cumpla: 
 
