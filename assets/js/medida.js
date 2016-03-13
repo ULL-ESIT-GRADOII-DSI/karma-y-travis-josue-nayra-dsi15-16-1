@@ -33,12 +33,12 @@
     /*global XRegExp */
     var regexp = XRegExp('^(\\s*)                                          ' +
                     '(?<valor> [-+]?[0-9]+(?:\\.[0-9]+)?(?:e[+-]?[0-9]+)?) ' +
-                    '(\\s*)                                                ' +
-                    '(?<tipo> [a-z]+)                                      ' +
-                    '(\\s*)                                                ' +
-                    '(to)?                                                 ' +
-                    '(\\s*)                                                ' +
-                    '(?<to> [a-z]+)                                        ' +
+                    '(\\s*)                                               ' +
+                    '(?<tipo> [a-zA-Z]+)                                   ' +
+                    '(\\s*)                                               ' +
+                    '(to)?                                                ' +
+                    '(\\s*)                                               ' +
+                    '(?<to> [a-zA-Z]+)                                        ' +
                     '(\\s*)$','ix');
     //res = valor.match(regexp);
     var res = XRegExp.exec(valor,regexp);
@@ -55,6 +55,7 @@
     measures.km = Kilometro;
     measures.m = Metro;
     measures.cm = Centimetro;
+    measures.mm = Milimetro;
     measures.in = Pulgada;
     measures.km3 = Kilometro3;
     measures.m3 = Metro3;
@@ -68,12 +69,17 @@
       var numero = match.valor,
           tipo   = match.tipo,
           destino = match.to;
+      tipo = tipo.toLowerCase();
+      destino = destino.toLowerCase();
       console.log("Numero:"+numero+",Tipo:"+tipo+",Destino:"+destino);
       try {
         var source = new measures[tipo](numero);  // new Fahrenheit(32)
+        console.log("Source:"+source);
         var target = "to"+measures[destino].name; // "toCelsius"
-        return source[target]() + " " + measures[destino].name; // "0 Celsius"
-      } 
+        console.log("Target:"+target);
+        console.log("Return:"+source[target]());
+        return source[target]().valor + " "+measures[destino].name; // "0 Celsius"
+      }
       catch(err) {
         return 'Desconozco como convertir desde "'+ tipo +'" hasta "'+ destino+'"';
       }
@@ -234,6 +240,10 @@
     {
       return new Milimetro(this.valor * 1000);
     }
+    Metro.prototype.toPulgada = function()
+    {
+      return this.toCentimetro() * 0.39370;
+    }
 
   // ----------------------------------------------------- //
 
@@ -288,6 +298,10 @@
     Metro3.prototype.toMilimetro3 = function()
     {
         return new Milimetro3(this.valor * 1000000000);
+    }
+    Metro3.prototype.toKilometro3 = function()
+    {
+        return new Kilometro3(this.valor / 1000000000);
     }
   // ----------------------------------------------------- //
     function Centimetro3(valor)
