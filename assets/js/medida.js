@@ -1,36 +1,34 @@
 /*global XRegExp*/
-var regexp = '^(\\s*)                                       ' +
-              '(?<valor> [-+]?[0-9]+(?:\\.[0-9]+)?(?:e[+-]?[0-9]+)?) ' +
-              '(\\s*)                                               ' +
-              '(?<tipo> [a-z][a-z0-9]*)                              ' +
-              '(\\s*)';
+(function(exports){
+  var regexp = '^(\\s*)                                       ' +
+                '(?<valor> [-+]?[0-9]+(?:\\.[0-9]+)?(?:e[+-]?[0-9]+)?) ' +
+                '(\\s*)                                               ' +
+                '(?<tipo> [a-z][a-z0-9]*)                              ' +
+                '(\\s*)';
 
   function Medida(valor,tipo)
   {
     console.log("Accedo a clase Medida");
-    if(valor)
+    if(tipo)
     {
-      if(tipo)
+      this.valor = valor || 0;
+      this.tipo  = tipo;
+    }
+    else
+    {
+      var expresion;
+      console.log("RegExp:"+regexp);
+      expresion = XRegExp.exec(valor,XRegExp(regexp,'ix'));
+      console.log("Expresion:"+expresion);
+      if(expresion)
       {
-        this.valor = valor || 0;
-        this.tipo  = tipo;
-      }
-      else
-      {
-        var expresion;
-        console.log("RegExp:"+regexp);
-        expresion = XRegExp.exec(valor,XRegExp(regexp,'ix'));
-        console.log("Expresion:"+expresion);
-        if(expresion)
-        {
-          var numero = expresion.valor;
-          numero = parseFloat(numero);
-          var tipo = expresion.tipo;
-          tipo = tipo.toLowerCase();
-          this.valor = numero;
-          this.tipo = tipo;
-          console.log("Valor: " + this.valor + ", Tipo: " + this.tipo);
-        }
+        var numero = expresion.valor;
+        numero = parseFloat(numero);
+        var tipo = expresion.tipo;
+        tipo = tipo.toLowerCase();
+        this.valor = numero;
+        this.tipo = tipo;
+        console.log("Valor: " + this.valor + ", Tipo: " + this.tipo);
       }
     }
   }
@@ -50,23 +48,7 @@ var regexp = '^(\\s*)                                       ' +
   }
 
   Medida.convertir = function(valor) {
-    //Medidas
     var measures = Medida.measures;
-    measures.c = Celsius;
-    measures.k = Kelvin;
-    measures.f = Farenheit;
-    measures.km = Kilometro;
-    measures.m = Metro;
-    measures.cm = Centimetro;
-    measures.mm = Milimetro;
-    measures.in = Pulgada;
-    measures.km3 = Kilometro3;
-    measures.m3 = Metro3;
-    measures.cm3 = Centimetro3;
-    measures.mm3 = Milimetro3;
-    measures.l = Litro;
-
-    console.log("Measures:"+measures);
     var match = Medida.match(valor);
     if (match) {
       var numero = match.valor,
@@ -82,7 +64,6 @@ var regexp = '^(\\s*)                                       ' +
         console.log("Target:"+target);
         console.log("Return:"+source[target]().valor);
         return source[target]().valor + " "+measures[destino].name; // "0 Celsius"
-        //return source[target]() + " " + measures[destino].name;
       }
       catch(err) {
         if (tipo == destino){
@@ -96,3 +77,7 @@ var regexp = '^(\\s*)                                       ' +
     else
       return "Introduzca una temperatura valida: 330e-1 F to C";
   };
+
+  exports.Medida = Medida;
+
+})(this);
