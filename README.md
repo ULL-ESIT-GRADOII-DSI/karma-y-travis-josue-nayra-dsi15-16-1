@@ -24,13 +24,15 @@ Modificar el código de la práctica anterior (OOP en js) para que cumpla:
 ### Enlace al campus de la asignatura
 * [Desarrollo de Sistemas Informáticos](https://campusvirtual.ull.es/my/)
 
+### Enlace a la descripción de la práctica
+* [Descripción de la práctica](https://campusvirtual.ull.es/1516/mod/page/view.php?id=180154)
 
 ### Repositorios en github.io
 
 * [Repositorio de la práctica en la organización](https://github.com/ULL-ESIT-GRADOII-DSI/eliminacion-del-switch-smell-josue-nayra-dsi15-16-1)
 * [Fork del repositorio de la organización](https://github.com/JosueTC94/eliminacion-del-switch-smell-josue-nayra-dsi15-16-1)
 
-### Despligue de la práctica
+### Despliegue de la práctica
 
 * [Conversor de Temperatura](http://ull-esit-gradoii-dsi.github.io/eliminacion-del-switch-smell-josue-nayra-dsi15-16-1)
 
