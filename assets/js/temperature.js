@@ -1,4 +1,7 @@
-
+(function(){
+  
+    var measures = Medida.measures || {};
+  
     function Temperatura(valor,tipo)
     {
       console.log("Accedo a clase Temperatura");
@@ -19,6 +22,7 @@
     }
     Celsius.prototype = new Temperatura;
     Celsius.prototype.constructor = Celsius;
+    measures.c = Celsius;
     Celsius.prototype.toFarenheit = function()
     {
       var c_tof = (this.valor * 9/5) + 32;
@@ -29,6 +33,8 @@
       var f_toK = (this.valor + 273.15);
       return new Kelvin(f_toK);
     }
+    
+    
   // ----------------------------------------------------- //
   
     function Farenheit(valor)
@@ -40,6 +46,7 @@
     }
     Farenheit.prototype = new Temperatura;
     Farenheit.prototype.constructor = Farenheit;
+    measures.f = Farenheit;
     Farenheit.prototype.toCelsius = function()
     {
         var f_toC = (this.valor - 32) * 5/9;
@@ -62,6 +69,7 @@
     }
     Kelvin.prototype = new Temperatura;
     Kelvin.prototype.constructor = Kelvin;
+    measures.k = Kelvin;
     Kelvin.prototype.toCelsius = function()
     {
       var k_toC = (this.valor - 273.15);
@@ -72,4 +80,5 @@
       var k_toF = (this.toCelsius().valor * 9/5) + 32;
       return new Farenheit(k_toF);
     }
-    
+
+})(this);

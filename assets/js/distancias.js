@@ -1,3 +1,6 @@
+(function(){
+  
+    var measures = Medida.measures || {};
 
     function Distancia(valor,tipo)
     {
@@ -16,6 +19,7 @@
     }
     Kilometro.prototype = new Distancia;
     Kilometro.prototype.constructor = Kilometro;
+    measures.km = Kilometro;
     Kilometro.prototype.toMetro = function()
     {
       return new Metro(this.valor * 1000);
@@ -42,6 +46,7 @@
     }
     Centimetro.prototype = new Distancia;
     Centimetro.prototype.constructor = Centimetro;
+    measures.cm = Centimetro;
     Centimetro.prototype.toMetro = function()
     {
       return new Metro(this.valor / 100);
@@ -67,6 +72,7 @@
     }
     Metro.prototype = new Distancia;
     Metro.prototype.constructor = Metro;
+    measures.m = Metro;
     Metro.prototype.toKilometro = function()
     {
       return new Kilometro(this.valor / 1000);
@@ -92,6 +98,7 @@
     }
     Milimetro.prototype = new Distancia;
     Milimetro.prototype.constructor = Milimetro;
+    measures.mm = Milimetro;
     Milimetro.prototype.toKilometro = function()
     {
         return new Kilometro(this.valor/1000000);
@@ -116,8 +123,10 @@
     }
     Pulgada.prototype = new Distancia;
     Pulgada.prototype.constructor = Pulgada;
+    measures.p = Pulgada;
     Pulgada.prototype.toCentimetro = function()
     {
         return new Centimetro(this.valor / 0.39370);
     }
 
+})(this);
