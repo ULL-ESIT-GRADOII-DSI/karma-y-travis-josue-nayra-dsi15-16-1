@@ -1,3 +1,4 @@
+(function(exports){
 
   function Medida(valor,tipo)
   {
@@ -52,23 +53,7 @@
   }
 
   Medida.convertir = function(valor) {
-    //Medidas
     var measures = Medida.measures;
-    measures.c = Celsius;
-    measures.k = Kelvin;
-    measures.f = Farenheit;
-    measures.km = Kilometro;
-    measures.m = Metro;
-    measures.cm = Centimetro;
-    measures.mm = Milimetro;
-    measures.in = Pulgada;
-    measures.km3 = Kilometro3;
-    measures.m3 = Metro3;
-    measures.cm3 = Centimetro3;
-    measures.mm3 = Milimetro3;
-    measures.l = Litro;
-
-    console.log("Measures:"+measures);
     var match = Medida.match(valor);
     if (match) {
       var numero = match.valor,
@@ -98,3 +83,7 @@
     else
       return "Introduzca una temperatura valida: 330e-1 F to C";
   };
+
+  exports.Medida = Medida;
+  
+})(this);
