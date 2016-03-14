@@ -1,3 +1,9 @@
+/*global XRegExp*/
+var regexp = '^(\\s*)                                       ' +
+              '(?<valor> [-+]?[0-9]+(?:\\.[0-9]+)?(?:e[+-]?[0-9]+)?) ' +
+              '(\\s*)                                               ' +
+              '(?<tipo> [a-z][a-z0-9]*)                              ' +
+              '(\\s*)';
 
   function Medida(valor,tipo)
   {
@@ -12,14 +18,14 @@
       else
       {
         var expresion;
-        var regexp = /^\s*([-+]?\d+(?:\.\d*)?\s*(?:e[+-]?\d+)?)\s*([a-z])+\s*$/i;
-        expresion = valor.match(regexp);
+        console.log("RegExp:"+regexp);
+        expresion = XRegExp.exec(valor,XRegExp(regexp,'ix'));
         console.log("Expresion:"+expresion);
         if(expresion)
         {
-          var numero = expresion[1];
+          var numero = expresion.valor;
           numero = parseFloat(numero);
-          var tipo = expresion[2];
+          var tipo = expresion.tipo;
           tipo = tipo.toLowerCase();
           this.valor = numero;
           this.tipo = tipo;
@@ -33,21 +39,13 @@
 
   Medida.match = function(valor)
   {
-    console.log("match_regexp");
-    console.log("valor->"+valor);
-    /*global XRegExp */
-    var regexp = XRegExp('^(\\s*)                                         ' +
-                    '(?<valor> [-+]?[0-9]+(?:\\.[0-9]+)?(?:e[+-]?[0-9]+)?) ' +
-                    '(\\s*)                                               ' +
-                    '(?<tipo> [a-zA-Z]+(3)?)                                      ' +
-                    '(\\s*)                                               ' +
-                    '(to)?                                                ' +
-                    '(\\s*)                                               ' +
-                    '(?<to> [a-zA-Z]+(3)?)                                        ' +
-                    '(\\s*)$','ix');
-    //res = valor.match(regexp);
-    var res = XRegExp.exec(valor,regexp);
-    console.log("Res->"+res);
+    var exp_regular = '(to)?'+
+                      '(\\s*)'+
+                      '(?<to> [a-z][a-z0-9]* )'+
+                      '(\\s*)$';
+
+    var res = XRegExp.exec(valor,XRegExp(regexp.concat(exp_regular),'ix'));
+    console.log("Numero:"+res.valor+", tipo: "+res.tipo+", Destino:"+res.to);
     return res;
   }
 
