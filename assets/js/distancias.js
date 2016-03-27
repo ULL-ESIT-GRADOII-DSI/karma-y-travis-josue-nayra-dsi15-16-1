@@ -1,4 +1,4 @@
-(function(){
+(function(exports){
   
     var measures = Medida.measures || {};
 
@@ -128,5 +128,11 @@
     {
         return new Centimetro(this.valor / 0.39370);
     }
-
+    
+    exports.Distancia = Distancia;
+    exports.Kilometro = Kilometro;
+    exports.Metro = Metro;
+    exports.Centimetro = Centimetro;
+    exports.Milimetro = Milimetro;
+    exports.Pulgada = Pulgada;
 })(this);

@@ -1,0 +1,28 @@
+#nayra_center,#repo,h1{text-align:center}
+a:hover,a:link{color:#603}
+#container,.pie{position:relative;width:100%}
+a:link,footer a{text-decoration:none}
+#converted,span{color:green}
+body,html{height:100%;background-color:#DCDCDC;font-family:Verdana}
+#josue,#nayra,h1{font-family:verdana;color:#fff}
+h1{font-weight:400;background:#603;padding:5px 15px;display:block;border-radius:30px}
+#repo1{color:#fff}
+#campus{float:right;color:#fff}
+a:hover{text-decoration:underline}
+td,th{vertical-align:top;text-align:right;font-size:large}
+.pie{height:10px;font-family:Century Gothic,CenturyGothic,AppleGothic,sans-serif;font-size:22px}
+#recuadro{border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;border:2px solid #f0e8f0;margin-top:60px;text-align:left}
+#izquierda{width:50%;float:left}
+#derecha{width:50%;float:right}
+fieldset{background:#E6E6E6;border-radius:30px}
+#converted{font-weight:700;font-size:large}
+input{margin-left:20px}
+#container{height:100%;margin-bottom:-50px}
+#seccion_central{margin-top:50px}
+footer{position:fixed;bottom:0;left:0;width:100%;padding:10px;background-color:#222;font-size:large}
+footer a{color:#FFF}
+.app{margin-top:10%}
+h4{font-weight:500}
+@media (max-width:550px){footer{text-align:center}
+}
+table{margin-left:auto;margin-right:auto}
