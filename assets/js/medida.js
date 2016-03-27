@@ -1,30 +1,34 @@
+/*global XRegExp*/
+(function(exports){
+  var regexp = '^(\\s*)                                       ' +
+                '(?<valor> [-+]?[0-9]+(?:\\.[0-9]+)?(?:e[+-]?[0-9]+)?) ' +
+                '(\\s*)                                               ' +
+                '(?<tipo> [a-z][a-z0-9]*)                              ' +
+                '(\\s*)';
 
   function Medida(valor,tipo)
   {
     console.log("Accedo a clase Medida");
-    if(valor)
+    if(tipo)
     {
-      if(tipo)
+      this.valor = valor || 0;
+      this.tipo  = tipo;
+    }
+    else
+    {
+      var expresion;
+      console.log("RegExp:"+regexp);
+      expresion = XRegExp.exec(valor,XRegExp(regexp,'ix'));
+      console.log("Expresion:"+expresion);
+      if(expresion)
       {
-        this.valor = valor || 0;
-        this.tipo  = tipo;
-      }
-      else
-      {
-        var expresion;
-        var regexp = /^\s*([-+]?\d+(?:\.\d*)?\s*(?:e[+-]?\d+)?)\s*([a-z])+\s*$/i;
-        expresion = valor.match(regexp);
-        console.log("Expresion:"+expresion);
-        if(expresion)
-        {
-          var numero = expresion[1];
-          numero = parseFloat(numero);
-          var tipo = expresion[2];
-          tipo = tipo.toLowerCase();
-          this.valor = numero;
-          this.tipo = tipo;
-          console.log("Valor: " + this.valor + ", Tipo: " + this.tipo);
-        }
+        var numero = expresion.valor;
+        numero = parseFloat(numero);
+        var tipo = expresion.tipo;
+        tipo = tipo.toLowerCase();
+        this.valor = numero;
+        this.tipo = tipo;
+        console.log("Valor: " + this.valor + ", Tipo: " + this.tipo);
       }
     }
   }
@@ -33,42 +37,18 @@
 
   Medida.match = function(valor)
   {
-    console.log("match_regexp");
-    console.log("valor->"+valor);
-    /*global XRegExp */
-    var regexp = XRegExp('^(\\s*)                                         ' +
-                    '(?<valor> [-+]?[0-9]+(?:\\.[0-9]+)?(?:e[+-]?[0-9]+)?) ' +
-                    '(\\s*)                                               ' +
-                    '(?<tipo> [a-zA-Z]+(3)?)                                      ' +
-                    '(\\s*)                                               ' +
-                    '(to)?                                                ' +
-                    '(\\s*)                                               ' +
-                    '(?<to> [a-zA-Z]+(3)?)                                        ' +
-                    '(\\s*)$','ix');
-    //res = valor.match(regexp);
-    var res = XRegExp.exec(valor,regexp);
-    console.log("Res->"+res);
+    var exp_regular = '(to)?'+
+                      '(\\s*)'+
+                      '(?<to> [a-z][a-z0-9]* )'+
+                      '(\\s*)$';
+
+    var res = XRegExp.exec(valor,XRegExp(regexp.concat(exp_regular),'ix'));
+    console.log("Numero:"+res.valor+", tipo: "+res.tipo+", Destino:"+res.to);
     return res;
   }
 
   Medida.convertir = function(valor) {
-    //Medidas
     var measures = Medida.measures;
-    measures.c = Celsius;
-    measures.k = Kelvin;
-    measures.f = Farenheit;
-    measures.km = Kilometro;
-    measures.m = Metro;
-    measures.cm = Centimetro;
-    measures.mm = Milimetro;
-    measures.in = Pulgada;
-    measures.km3 = Kilometro3;
-    measures.m3 = Metro3;
-    measures.cm3 = Centimetro3;
-    measures.mm3 = Milimetro3;
-    measures.l = Litro;
-
-    console.log("Measures:"+measures);
     var match = Medida.match(valor);
     if (match) {
       var numero = match.valor,
@@ -84,7 +64,6 @@
         console.log("Target:"+target);
         console.log("Return:"+source[target]().valor);
         return source[target]().valor + " "+measures[destino].name; // "0 Celsius"
-        //return source[target]() + " " + measures[destino].name;
       }
       catch(err) {
         if (tipo == destino){
@@ -98,3 +77,7 @@
     else
       return "Introduzca una temperatura valida: 330e-1 F to C";
   };
+
+  exports.Medida = Medida;
+
+})(this);
