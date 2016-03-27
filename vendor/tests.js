@@ -117,10 +117,9 @@ describe('Medida', function() {
         });
     });
 
-    //Pruebas para la clase Temperatura.
-
-
 });
+
+//Pruebas para la clase Temperatura.
 describe('Temperatura',function()
 {
   var t1 = new Temperatura(100,"C");
