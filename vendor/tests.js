@@ -121,3 +121,67 @@ describe('Medida', function() {
 
 
 });
+describe('Temperatura',function()
+{
+  var t1 = new Temperatura(100,"C");
+  var t2 = new Temperatura(200,"F");
+  var t3 = new Temperatura(300,"K");
+  var c1 = new Celsius(10);
+  var f1 = new Farenheit(20);
+  var k1 = new Kelvin(400);
+  
+  describe('Construccion',function()
+  {
+    it('Los objetos t1,t2 y t3 son instancias de la clase Temperatura y Medida',function()
+    {
+        expect(t1).to.be.an.instanceof(Medida);
+        expect(t1).to.be.an.instanceof(Temperatura);
+        expect(t1).to.exist;
+        expect(t1).to.not.be.null;
+        expect(t2).to.be.an.instanceof(Medida);
+        expect(t2).to.be.an.instanceof(Temperatura);
+        expect(t2).to.exist;
+        expect(t2).to.not.be.null;
+        expect(t3).to.be.an.instanceof(Medida);
+        expect(t3).to.be.an.instanceof(Temperatura);
+        expect(t3).to.exist;
+        expect(t3).to.not.be.null;
+    });
+    it('Se crea un objeto de tipo Celsius',function()
+    {
+        expect(c1).to.be.an.instanceof(Medida);
+        expect(c1).to.be.an.instanceof(Temperatura);
+        expect(c1).to.be.an.instanceof(Celsius);
+        expect(c1).to.exist;
+    });
+    it('Para el objeto Celsius, existe un metodo toFarenheit y toKelvin',function()
+    {
+        expect(c1).to.respondTo('toFarenheit');
+        expect(c1).to.respondTo('toKelvin');
+    })
+    it('Se crea un objeto de tipo Farenheit',function()
+    {
+        expect(f1).to.be.an.instanceof(Medida);
+        expect(f1).to.be.an.instanceof(Temperatura);
+        expect(f1).to.be.an.instanceof(Farenheit);
+        expect(f1).to.exist;      
+    });
+    it('Para el objeto Farenheit, existe un metodo toCelsius y toKelvin',function()
+    {
+        expect(f1).to.respondTo('toCelsius');
+        expect(f1).to.respondTo('toKelvin');
+    });
+    it('Se crea un objeto de tipo Kelvin',function()
+    {
+        expect(k1).to.be.an.instanceof(Medida);
+        expect(k1).to.be.an.instanceof(Temperatura);
+        expect(k1).to.be.an.instanceof(Kelvin);
+        expect(k1).to.exist;      
+    });
+    it('Para un objeto Kelvin, existe un metodo toCelsius y toFarenheit',function()
+    {
+        expect(k1).to.respondTo('toCelsius');
+        expect(k1).to.respondTo('toFarenheit');
+    });
+  });
+});
