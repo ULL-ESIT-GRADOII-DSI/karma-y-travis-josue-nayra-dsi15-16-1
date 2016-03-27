@@ -8,8 +8,8 @@ describe('Medida', function() {
   var medida3 = new Medida("77 m");
   
   
-  describe('Construccion',function()
-  {
+    describe('Construccion',function()
+    {
       it('Se crean los objetos medida1, medida2, medida3',function()
       {
         expect(medida1).to.be.an('object');
@@ -44,45 +44,43 @@ describe('Medida', function() {
         expect(medida1).to.have.property('valor');
         expect(medida1).to.have.property('tipo');
       });
-  });
-
-  describe('Comparando las medidas',function()
-    {
-      it('El valor y tipo de los objetos medida1 y medida2 son iguales',function()
-      {
-        expect(medida1.valor).to.be.equal(medida2.valor);
-        expect(medida1.tipo).to.be.equal(medida2.tipo);
-      });
-      it('El valor y tipo de los objetos medida3 y medida1 o medida2 son diferentes',function()
-      {
-        expect(medida3.valor).to.not.be.equal(medida1.valor);
-        expect(medida3.valor).to.not.be.equal(medida2.valor);
-        expect(medida3.tipo).to.not.be.equal(medida1.tipo);
-        expect(medida3.tipo).to.not.be.equal(medida2.tipo);
-    
-      });
-      it('El valor del objeto medida3 es mayor que el valor del objeto medida1',function()
-      {
-        expect(medida1.valor).to.not.be.above(medida3.valor);
-        expect(medida3.valor).to.be.above(medida2.valor);
-      });  
-      it('El valor del objeto medida1 es menor que el valor del objeto medida3',function()
-      {
-        expect(medida1.valor).to.be.below(medida3.valor);
-      }); 
-      it('El valor de los objetos medida1, medida2 y medida3 esta dentro del rango 40-100',function()
-      {
-        expect(medida1.valor).to.be.within(40,100);
-        expect(medida2.valor).to.be.within(40,100);
-        expect(medida3.valor).to.be.within(40,100);
-      });
-      it('El valor de los objetos medida1 y medida2 no esta dentro del rango 50-100',function()
-      {
-        expect(medida1.valor).to.not.be.within(50,100);
-        expect(medida2.valor).to.not.be.within(50,100);
-      });
     });
-    
+
+    describe('Comparando las medidas',function()
+    {
+        it('El valor y tipo de los objetos medida1 y medida2 son iguales',function()
+        {
+            expect(medida1.valor).to.be.equal(medida2.valor);
+            expect(medida1.tipo).to.be.equal(medida2.tipo);
+        });
+        it('El valor y tipo de los objetos medida3 y medida1 o medida2 son diferentes',function()
+        {
+            expect(medida3.valor).to.not.be.equal(medida1.valor);
+            expect(medida3.valor).to.not.be.equal(medida2.valor);
+            expect(medida3.tipo).to.not.be.equal(medida1.tipo);
+            expect(medida3.tipo).to.not.be.equal(medida2.tipo);
+        });
+        it('El valor del objeto medida3 es mayor que el valor del objeto medida1',function()
+        {
+            expect(medida1.valor).to.not.be.above(medida3.valor);
+            expect(medida3.valor).to.be.above(medida2.valor);
+        });  
+        it('El valor del objeto medida1 es menor que el valor del objeto medida3',function()
+        {
+            expect(medida1.valor).to.be.below(medida3.valor);
+        }); 
+        it('El valor de los objetos medida1, medida2 y medida3 esta dentro del rango 40-100',function()
+        {
+            expect(medida1.valor).to.be.within(40,100);
+            expect(medida2.valor).to.be.within(40,100);
+            expect(medida3.valor).to.be.within(40,100);
+        });
+        it('El valor de los objetos medida1 y medida2 no esta dentro del rango 50-100',function()
+        {
+            expect(medida1.valor).to.not.be.within(50,100);
+            expect(medida2.valor).to.not.be.within(50,100);
+        });
+    });
     
     describe('Pruebas y casos',function()
     {
@@ -117,9 +115,11 @@ describe('Medida', function() {
             var aux = "1z"; //No especificamos destino alguno.
             expect(Medida.convertir(aux)).to.be.equal("Introduzca una temperatura valida: 330e-1 F to C");
         });
-  });
+    });
 
 });
+
+//Pruebas para la clase Temperatura.
 describe('Temperatura',function()
 {
   var t1 = new Temperatura(100,"C");
@@ -200,5 +200,173 @@ describe('Temperatura',function()
           expect(Medida.convertir('10 C to K')).to.be.below('300.00 Kelvin');
       });      
     });
+    describe('Desde Farenheit...',function()
+    {
+      it('20 F to C = -6.666666666666667 Celsius',function()
+      {
+          expect(Medida.convertir('20 F to C')).to.equal('-6.666666666666667 Celsius');
+      });
+      it('20 F to K > -10.00 Kelvin',function()
+      {
+          expect(Medida.convertir('20 F to k')).to.be.above('-10.00 Kelvin');
+      });
+      it('20 F to K < 350.00 Kelvin',function()
+      {
+          expect(Medida.convertir('20 F to K')).to.be.below('350.00 Kelvin');
+      });      
+    });
+    describe('Desde kelvin...',function()
+    {
+      it('400 K to C != 0 Celsius',function()
+      {
+          expect(Medida.convertir('400 K to C')).to.not.equal('0 Celsius');
+      });
+      it('400 K to F > -100.00 Farenheit',function()
+      {
+          //expect(Medida.convertir('32 K to F')).to.be.below('-500.00 Farenheit');
+          expect(Medida.convertir('400 K to F')).to.be.above('-100 Farenheit');
+      });
+      it('400 K to F < 350.00 Farenheit',function()
+      {
+          expect(Medida.convertir('400 K to F')).to.be.below('350.00 Farenheit');
+      });        
+    });
+    
+    it('Si el destino es igual que la unidad de origen, se devuelve lo mismo como por ejemplo: 32 C to C = 32 c',function()
+    {
+        expect(Medida.convertir('32C to C')).to.be.equal('32 c');
+        expect(Medida.convertir('32F to F')).to.be.equal('32 f');
+        expect(Medida.convertir('32K to K')).to.be.equal('32 k');
+    });
+    it('Conversiones con numeros con e: 1.2e1 F to K',function()
+    {
+        expect(Medida.convertir('1.2e1F to K')).to.be.equal('262.0388888888889 Kelvin')
+    });
+    it('En la expresion puede ponerse el to o no: 1.2e1F K',function()
+    {
+        expect(Medida.convertir('1.2e1F K')).to.be.equal('262.0388888888889 Kelvin')
+    });
+    it('En la expresion pueden ponerse espacios entre las unidades, al final y al principio: 1.2e1   F   to    K',function()
+    { 
+        expect(Medida.convertir('   1.2e1   F   to    K     ')).to.be.equal('262.0388888888889 Kelvin')
+    });
   });
+});
+
+//Pruebas para la clase Distancia.
+describe('Distancias',function()
+{
+    var d1 = new Distancia(32,"km");
+    var d2 = new Kilometro(79);
+    var d3 = new Metro(103);
+    var d4 = new Pulgada(7.2e1);
+
+    describe('Construccion',function()
+    {
+        it('Se crean los objetos d1, d2, d3 y d4 de tipo Distancia, Kilometro , Milimetro y Pulgada, respectivamente',function()
+        {
+            expect(d1).to.be.an.instanceof(Distancia);
+            expect(d1).to.be.an.instanceof(Medida);
+            
+            expect(d2).to.be.an.instanceof(Kilometro);
+            expect(d2).to.be.an.instanceof(Distancia);
+            expect(d2).to.be.an.instanceof(Medida);
+            
+            expect(d3).to.be.an.instanceof(Metro);
+            expect(d3).to.be.an.instanceof(Distancia);
+            expect(d3).to.be.an.instanceof(Medida);        
+            
+            expect(d4).to.be.an.instanceof(Pulgada);
+            expect(d4).to.be.an.instanceof(Distancia);
+            expect(d4).to.be.an.instanceof(Medida); 
+        }); 
+        it('El objeto d1 no responde a los metodos toMetro, toKilometro, toPulgada',function()
+        {
+            expect(d1).to.not.respondTo('toMetro');
+            expect(d1).to.not.respondTo('toKilometro');
+            expect(d1).to.not.respondTo('toPulgada');
+        });
+        it('El objeto d2 responde a los metodos toMetro,toCentimetro,toMilimetro y toPulgada',function()
+        {
+            expect(d2).to.respondTo('toMetro');
+            expect(d2).to.respondTo('toCentimetro');
+            expect(d2).to.respondTo('toMilimetro');
+            expect(d2).to.respondTo('toPulgada');            
+        });
+        it('El objeto d3 responde a los metodos toKilometro, toCentimetro , toMilimetro y toPulgada', function()
+        {
+            expect(d3).to.respondTo('toKilometro');
+            expect(d3).to.respondTo('toCentimetro');
+            expect(d3).to.respondTo('toMilimetro');
+            expect(d3).to.respondTo('toPulgada');       
+        });
+        it('El objeto d4 responde a los metodos toKilometro, toCentimetro , toMilimetro y toMetro', function()
+        {
+            expect(d4).to.respondTo('toKilometro');
+            expect(d4).to.respondTo('toCentimetro');
+            expect(d4).to.respondTo('toMilimetro');
+            expect(d4).to.respondTo('toMetro');       
+        });
+        it('Los objetos de tipo Distancia no responden a los metodos de la clase Volumen o Temperatura',function()
+        {
+            expect(d1).to.not.respondTo('toCelsius');
+            expect(d1).to.not.respondTo('toFarenheit');
+            expect(d1).to.not.respondTo('toKelvin');
+            expect(d1).to.not.respondTo('toLitro');
+            expect(d1).to.not.respondTo('toKilometro3');
+            expect(d1).to.not.respondTo('toMetro3');
+            expect(d1).to.not.respondTo('toCentimetro3');
+            expect(d1).to.not.respondTo('toMilimetro3');
+        });
+    });
+    describe('Conversiones',function()
+    {
+        describe('Desde Kilometro...',function()
+        {
+            it('79 km to m = 79000 metros',function()
+            {
+                expect(d2.toMetro().valor).to.be.equal(79000);
+            });
+            it('79 km to cm < 8000000 centimetros',function()
+            {
+                expect(d2.toCentimetro().valor).to.be.below(8000000);
+            });
+            it('79 km to mm > 75000000 milimetros',function()
+            {
+                expect(d2.toMilimetro().valor).to.be.above(75000000);
+            });
+        });
+        describe('Desde Metro',function()
+        {
+            it('103 m to km = 0,103 kilometros',function()
+            {
+                expect(d3.toKilometro().valor).to.be.equal(0.103);
+            });
+            it('103 m to cm < 10300 centimetros',function()
+            {
+                expect(d3.toCentimetro().valor).to.be.below(15000);
+            });
+            it('103 m to mm > 103000 milimetros',function()
+            {
+                expect(d3.toMilimetro().valor).to.be.above(100000);
+            });
+        });
+        describe('Desde Pulgada',function()
+        {
+            it('7.2e1 p to km = 1 kilometro',function()
+            {
+                var aux = (d4.toKilometro().valor).toFixed(4);
+                aux = parseFloat(aux);
+                expect(aux).to.be.equal(0.0018);
+            });
+            it('7.2e1 p to cm < 183 centimetros',function()
+            {
+                expect(d4.toCentimetro().valor).to.be.below(183);
+            });
+            it('7.2e1 p to mm > 1828.803 milimetros',function()
+            {
+                expect(d4.toMilimetro().valor).to.be.above(1820);
+            });
+        });
+    });
 });
