@@ -1,4 +1,4 @@
-(function(){
+(function(exports){
     
     var measures = Medida.measures || {};
     
@@ -139,4 +139,11 @@
     {
         return new Milimetro3(this.valor * 1000000);
     }
+    
+    exports.Volumen = Volumen;
+    exports.Kilometro3 = Kilometro3;
+    exports.Metro3 = Metro3;
+    exports.Centimetro3 = Centimetro3;
+    exports.Milimetro3 = Milimetro3;
+    exports.Litro = Litro;
 })(this);

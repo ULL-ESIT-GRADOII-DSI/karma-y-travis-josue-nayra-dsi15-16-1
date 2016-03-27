@@ -1,4 +1,4 @@
-(function(){
+(function(exports){
   
     var measures = Medida.measures || {};
   
@@ -80,5 +80,9 @@
       var k_toF = (this.toCelsius().valor * 9/5) + 32;
       return new Farenheit(k_toF);
     }
-
+    exports.Temperatura = Temperatura;
+    exports.Celsius = Celsius;
+    exports.Farenheit = Farenheit;
+    exports.Kelvin = Kelvin;
+    
 })(this);
