@@ -1,1 +1,1 @@
-!function(n){"use strict";function e(){console.log("Entrando en main.js");var n=document.getElementById("convert").value,e=document.getElementById("converted");return e.innerHTML=Medida.convertir(n),!1}n.main=e}(this);
+!function(e){"use strict";function n(){var e=document.getElementById("convert").value,n=document.getElementById("converted");return n.innerHTML=Medida.convertir(e),!1}e.main=n}(this);
