@@ -3,6 +3,7 @@ var expect = chai.expect;
 //Pruebas para la clase Medida.
 describe('Medida', function() {
   
+  //Declaración de objetos de prueba
   var medida1 = new Medida(45,"km");
   var medida2 = new Medida("45km");
   var medida3 = new Medida("77 m");
@@ -122,6 +123,7 @@ describe('Medida', function() {
 //Pruebas para la clase Temperatura.
 describe('Temperatura',function()
 {
+  //Declaración de objetos de prueba
   var t1 = new Temperatura(100,"C");
   var t2 = new Temperatura(200,"F");
   var t3 = new Temperatura(300,"K");
@@ -256,6 +258,7 @@ describe('Temperatura',function()
 //Pruebas para la clase Distancia.
 describe('Distancias',function()
 {
+    //Declaración de objetos de prueba
     var d1 = new Distancia(32,"km");
     var d2 = new Kilometro(79);
     var d3 = new Metro(103);
@@ -374,6 +377,7 @@ describe('Distancias',function()
 //Pruebas para la clase Volumen
 describe('Volumenes',function()
 {
+    //Declaración de objetos de prueba
     var v1 = new Volumen(32,"m3");
     var v2 = new Kilometro3(60);
     var v3 = new Metro3(150);
