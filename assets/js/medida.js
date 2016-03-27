@@ -44,7 +44,7 @@
                       '(\\s*)$';
 
     var res = XRegExp.exec(valor,XRegExp(regexp.concat(exp_regular),'ix'));
-    console.log("Numero:"+res.valor+", tipo: "+res.tipo+", Destino:"+res.to);
+    //console.log("Numero:"+res.valor+", tipo: "+res.tipo+", Destino:"+res.to);
     return res;
   }
 
@@ -71,7 +71,7 @@
           return numero + " " + destino;
         }
         else{
-          return 'Desconozco como convertir desde "'+tipo+'" hasta "'+destino+'"';
+          return "Desconozco como convertir desde "+tipo+" hasta "+destino;
         }
       }
     }
