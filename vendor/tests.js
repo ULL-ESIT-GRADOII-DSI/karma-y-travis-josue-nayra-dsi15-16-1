@@ -183,4 +183,22 @@ describe('Temperatura',function()
         expect(k1).to.respondTo('toFarenheit');
     });
   });
+  describe('Conversiones',function()
+  {
+    describe('Desde Celsius...',function()
+    {
+      it('10 C to F = 50 Farenheit',function()
+      {
+          expect(Medida.convertir('10C to F')).to.equal('50 Farenheit');
+      });
+      it('10 C to K > 300.00 Kelvin',function()
+      {
+          expect(Medida.convertir('10 C to k')).to.be.above('200.00 Kelvin');
+      });
+      it('10 C to K < 350.00 Kelvin',function()
+      {
+          expect(Medida.convertir('10 C to K')).to.be.below('300.00 Kelvin');
+      });      
+    });
+  });
 });
