@@ -11,6 +11,7 @@
     console.log("Accedo a clase Medida");
     if(tipo)
     {
+      valor = parseFloat(valor);
       this.valor = valor || 0;
       this.tipo  = tipo;
     }
