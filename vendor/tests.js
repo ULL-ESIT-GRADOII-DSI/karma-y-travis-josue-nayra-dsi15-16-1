@@ -3,6 +3,7 @@ var expect = chai.expect;
 //Pruebas para la clase Medida.
 describe('Medida', function() {
   
+  //Declaración de objetos de prueba
   var medida1 = new Medida(45,"km");
   var medida2 = new Medida("45km");
   var medida3 = new Medida("77 m");
@@ -122,6 +123,7 @@ describe('Medida', function() {
 //Pruebas para la clase Temperatura.
 describe('Temperatura',function()
 {
+  //Declaración de objetos de prueba
   var t1 = new Temperatura(100,"C");
   var t2 = new Temperatura(200,"F");
   var t3 = new Temperatura(300,"K");
@@ -256,6 +258,7 @@ describe('Temperatura',function()
 //Pruebas para la clase Distancia.
 describe('Distancias',function()
 {
+    //Declaración de objetos de prueba
     var d1 = new Distancia(32,"km");
     var d2 = new Kilometro(79);
     var d3 = new Metro(103);
@@ -366,6 +369,123 @@ describe('Distancias',function()
             it('7.2e1 p to mm > 1828.803 milimetros',function()
             {
                 expect(d4.toMilimetro().valor).to.be.above(1820);
+            });
+        });
+    });
+});
+
+//Pruebas para la clase Volumen
+describe('Volumenes',function()
+{
+    //Declaración de objetos de prueba
+    var v1 = new Volumen(32,"m3");
+    var v2 = new Kilometro3(60);
+    var v3 = new Metro3(150);
+    var v4 = new Milimetro3(2.567e1);
+    
+    describe('Construccion',function()
+    {
+        it('Se crean los objetos v1, v2, v3 y v4 de tipo Volumen, Kilometro3 , Metro3 y Milimetro3, respectivamente',function()
+        {
+            expect(v1).to.be.an.instanceof(Volumen);
+            expect(v1).to.be.an.instanceof(Medida);
+            
+            expect(v2).to.be.an.instanceof(Kilometro3);
+            expect(v2).to.be.an.instanceof(Volumen);
+            expect(v2).to.be.an.instanceof(Medida);
+            
+            expect(v3).to.be.an.instanceof(Metro3);
+            expect(v3).to.be.an.instanceof(Volumen);
+            expect(v3).to.be.an.instanceof(Medida);        
+            
+            expect(v4).to.be.an.instanceof(Milimetro3);
+            expect(v4).to.be.an.instanceof(Volumen);
+            expect(v4).to.be.an.instanceof(Medida); 
+        });
+        it('El objeto v1 no responde a los metodos toMetro3, toKilometro3 y toMilimetro3',function()
+        {
+            expect(v1).to.not.respondTo('toMetro3');
+            expect(v1).to.not.respondTo('toKilometro3');
+            expect(v1).to.not.respondTo('toMilimetro3');
+        });
+        it('El objeto v2 responde a los metodos toMetro3, toCentimetro3 y toMilimetro3',function()
+        {
+            expect(v2).to.respondTo('toMetro3');
+            expect(v2).to.respondTo('toCentimetro3');            
+            expect(v2).to.respondTo('toMilimetro3');
+        });
+        it('El objeto v3 responde a los metodos toKilometro3, toCentimetro3 y toMilimetro3', function()
+        {
+            expect(v3).to.respondTo('toKilometro3');
+            expect(v3).to.respondTo('toCentimetro3');
+            expect(v3).to.respondTo('toMilimetro3');
+        });
+        it('El objeto v4 responde a los metodos toKilometro3, toCentimetro3 y toMetro3', function()
+        {
+            expect(v4).to.respondTo('toKilometro3');
+            expect(v4).to.respondTo('toCentimetro3');
+            expect(v4).to.respondTo('toMetro3');       
+        });
+        it('Los objetos de tipo Distancia no responden a los metodos de la clase Volumen o Distancia',function()
+        {
+            expect(v1).to.not.respondTo('toCelsius');
+            expect(v1).to.not.respondTo('toFarenheit');
+            expect(v1).to.not.respondTo('toKelvin');
+            expect(v1).to.not.respondTo('toLitro');
+            expect(v1).to.not.respondTo('toKilometro');
+            expect(v1).to.not.respondTo('toMetro');
+            expect(v1).to.not.respondTo('toCentimetro');
+            expect(v1).to.not.respondTo('toMilimetro');
+            expect(v1).to.not.respondTo('toPulgada');
+        });
+    });
+    describe('Conversiones',function()
+    {
+        describe('Desde Kilometro3...',function()
+        {
+            it('60 km3 to m3 = 60000000000 metro3',function()
+            {
+                expect(v2.toMetro3().valor).to.be.equal(60000000000);
+            });
+            it('60 km3 to cm3 < 70000000000000000 centimetro3',function()
+            {
+                expect(v2.toCentimetro3().valor).to.be.below(70000000000000000);
+            });
+            it('60 km3 to mm3 > 55000000000000000000 milimetro3',function()
+            {
+                expect(v2.toMilimetro3().valor).to.be.above(75000000);
+            });
+        });
+        describe('Desde Metro3',function()
+        {
+            it('150 m3 to km3 =  1.5e-7 Kilometro3',function()
+            {
+                expect(v3.toKilometro3().valor).to.be.equal(1.5e-7);
+            });
+            it('150 m3 to cm3 < 160000000 Centimetro3',function()
+            {
+                expect(v3.toCentimetro3().valor).to.be.below(160000000);
+            });
+            it('150 m3 to mm3 > 140000000000 Milimetro3',function()
+            {
+                expect(v3.toMilimetro3().valor).to.be.above(140000000000);
+            });
+        });
+        describe('Desde Milimetro3',function()
+        {
+            it('2.567e1 mm3 to km3 = 2.567e-17 Kilometro3',function()
+            {
+                var aux = v4.toKilometro3().valor;
+                aux = parseFloat(aux);
+                expect(aux).to.be.equal(2.5670000000000003e-17);
+            });
+            it('7.2e1 mm3 to cm3 < 1 Centimetro3',function()
+            {
+                expect(v4.toCentimetro3().valor).to.be.below(1);
+            });
+            it('7.2e1 mm3 to m3 > 7.2e-7 Metro3',function()
+            {
+                expect(v4.toMetro3().valor).to.be.above(7.2e-9);
             });
         });
     });

@@ -128,6 +128,18 @@
     {
         return new Centimetro(this.valor / 0.39370);
     }
+    Pulgada.prototype.toMetro = function()
+    {
+        return new Metro(this.toCentimetro().valor / 100);
+    }
+    Pulgada.prototype.toMilimetro = function()
+    {
+        return new Milimetro(this.toCentimetro().valor * 10);
+    }   
+    Pulgada.prototype.toKilometro = function()
+    {
+        return new Kilometro(this.toCentimetro().valor / 100000);
+    }
     
     exports.Distancia = Distancia;
     exports.Kilometro = Kilometro;
