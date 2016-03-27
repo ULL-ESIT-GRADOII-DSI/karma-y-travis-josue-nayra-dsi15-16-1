@@ -3,7 +3,7 @@ var expect = chai.expect;
 //Pruebas para la clase Medida.
 describe('Medida', function() {
   
-  var medida1 = new Medida("45","km");
+  var medida1 = new Medida(45,"km");
   var medida2 = new Medida("45km");
   var medida3 = new Medida("77 m");
   
@@ -24,7 +24,7 @@ describe('Medida', function() {
       });
       it('Se construye medida pasandole al constructor: Valor y Tipo', function () {
         expect(medida1).to.not.be.null;
-        expect(medida1.valor).to.equal("45");
+        expect(medida1.valor).to.equal(45);
         expect(medida1.tipo).to.equal("km");
       });
       it('Se construye medida pasandole al constructor: Valor',function(){
