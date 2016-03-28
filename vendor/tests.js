@@ -253,12 +253,17 @@ describe('Distancias',function()
     var d2 = new Kilometro(79);
     var d3 = new Metro(103);
     var d4 = new Pulgada(7.2e1);
+    var d5 = new Centimetro(103);
+    var d6 = new Milimetro(50);
+    
     beforeEach(function()
     {
         d1 = new Distancia(32,"km");
         d2 = new Kilometro(79);
         d3 = new Metro(103);
         d4 = new Pulgada(7.2e1);
+        d5 = new Centimetro(103);
+        d6 = new Milimetro(50);
     });
 
     describe('Construccion',function()
@@ -335,7 +340,7 @@ describe('Distancias',function()
             {
                 expect(d2.toMilimetro().valor).to.be.above(75000000);
             });
-            it('79 km to p > 10000 p',function()
+            it('79 km to p > 10000 pulgadas',function()
             {
                 expect(d2.toPulgada().valor).to.be.above(10000);
             });
@@ -354,6 +359,49 @@ describe('Distancias',function()
             {
                 expect(d3.toMilimetro().valor).to.be.above(100000);
             });
+            it('103 m to p > 4000 pulgadas',function()
+            {
+                expect(d3.toPulgada().valor).to.be.above(4000);
+            });
+        });
+        describe('Desde Centimetro',function()
+        {
+            it('103 cm to km =  kilometros',function()
+            {
+                expect(d5.toKilometro().valor).to.be.equal(0.0103);
+            });
+            it('103 cm to m < 1,5 metros',function()
+            {
+                expect(d5.toMetro().valor).to.be.below(1.5);
+            });
+            it('103 cm to mm > 1000 milimetros',function()
+            {
+                expect(d5.toMilimetro().valor).to.be.above(1000);
+            });
+            it('103 cm to p > 40 pulgadas',function()
+            {
+                expect(d5.toPulgada().valor).to.be.above(40);
+            });
+
+        });
+        describe('Desde Milimetro',function()
+        {
+            it('50 mm to km =  0.000103 Kilometros',function()
+            {
+                expect(d6.toKilometro().valor).to.be.equal(0.00005);
+            });
+            it('50 mm to m < 0.15 Metros',function()
+            {
+                expect(d6.toMetro().valor).to.be.below(0.15);
+            });
+            it('50 mm to cm > 0.1 centimetros',function()
+            {
+                expect(d6.toCentimetro().valor).to.be.above(0.1);
+            });
+            it('50 mm to p > 1.9 pulgadas',function()
+            {
+                expect(d6.toPulgada().valor).to.be.above(1.9);
+            });
         });
         describe('Desde Pulgada',function()
         {
@@ -370,6 +418,10 @@ describe('Distancias',function()
             it('7.2e1 p to mm > 1828.803 milimetros',function()
             {
                 expect(d4.toMilimetro().valor).to.be.above(1820);
+            });
+            it('7.2e1 p to m > 1.5 m',function()
+            {
+                expect(d4.toMetro().valor).to.be.above(1.5);
             });
         });
     });
