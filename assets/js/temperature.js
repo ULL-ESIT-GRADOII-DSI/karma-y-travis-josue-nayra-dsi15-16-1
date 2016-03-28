@@ -4,7 +4,7 @@
   
     function Temperatura(valor,tipo)
     {
-      console.log("Accedo a clase Temperatura");
+      //console.log("Accedo a clase Temperatura");
       Medida.call(this,valor,tipo);
       /* tipo es opcional. Debería admitir new Medida("45.2 F") */
     }
@@ -17,7 +17,7 @@
     {
       var c_tof = 0;
       var c_tok = 0;
-      console.log("Accedo a clase Celsius");
+      //console.log("Accedo a clase Celsius");
       Temperatura.call(this,valor,'c');
     }
     Celsius.prototype = new Temperatura;
@@ -41,7 +41,7 @@
     {
       var f_toC = 0;
       var f_toK = 0;
-      console.log("Accedo a la clase Fahrenheit.");
+      //console.log("Accedo a la clase Fahrenheit.");
       Temperatura.call(this,valor,'f');
     }
     Farenheit.prototype = new Temperatura;
@@ -64,7 +64,7 @@
     {
       var k_toC = 0;
       var k_toF = 0;
-      console.log("Accedo a clase Kelvin");
+      //console.log("Accedo a clase Kelvin");
       Temperatura.call(this,valor,'k');
     }
     Kelvin.prototype = new Temperatura;

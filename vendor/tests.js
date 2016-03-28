@@ -1,13 +1,13 @@
 var expect = chai.expect;
 
+
 //Pruebas para la clase Medida.
 describe('Medida', function() {
   
-  //Declaración de objetos de prueba
-  var medida1 = new Medida(45,"km");
-  var medida2 = new Medida("45km");
-  var medida3 = new Medida("77 m");
-  
+       //Declaración de objetos de prueba
+      var medida1 = new Medida(45,"km");
+      var medida2 = new Medida("45km");
+      var medida3 = new Medida("77 m"); 
   
     describe('Construccion',function()
     {
@@ -34,17 +34,18 @@ describe('Medida', function() {
         expect(medida2.valor).to.equal(45);
         expect(medida2.tipo).to.equal("km");
       });   
+
       /*it('Los objetos medida1, medida2 y medida3 son instancias de Medida',function()
       {
         expect(medida1).to.be.an.instanceof(Medida);
         expect(medida2).to.be.an.instanceof(Medida);
         expect(medida3).to.be.an.instanceof(Medida);
-      });
+      });*/
       it('Los objetos medida1, medida2 y medida3 tienen los atributos: valor y tipo',function()
       {
         expect(medida1).to.have.property('valor');
         expect(medida1).to.have.property('tipo');
-      });*/
+      });
     });
 
     describe('Comparando las medidas',function()
@@ -135,24 +136,19 @@ describe('Temperatura',function()
   {
     /*it('Los objetos t1,t2 y t3 son instancias de la clase Temperatura y Medida',function()
     {
-        expect(t1).to.be.an.instanceof(Medida);
-        expect(t1).to.be.an.instanceof(Temperatura);
+
         expect(t1).to.exist;
         expect(t1).to.not.be.null;
-        expect(t2).to.be.an.instanceof(Medida);
-        expect(t2).to.be.an.instanceof(Temperatura);
+
         expect(t2).to.exist;
         expect(t2).to.not.be.null;
-        expect(t3).to.be.an.instanceof(Medida);
-        expect(t3).to.be.an.instanceof(Temperatura);
+
         expect(t3).to.exist;
         expect(t3).to.not.be.null;
     });
     it('Se crea un objeto de tipo Celsius',function()
     {
-        expect(c1).to.be.an.instanceof(Medida);
-        expect(c1).to.be.an.instanceof(Temperatura);
-        expect(c1).to.be.an.instanceof(Celsius);
+
         expect(c1).to.exist;
     });
     it('Para el objeto Celsius, existe un metodo toFarenheit y toKelvin',function()
@@ -162,9 +158,6 @@ describe('Temperatura',function()
     })
     it('Se crea un objeto de tipo Farenheit',function()
     {
-        expect(f1).to.be.an.instanceof(Medida);
-        expect(f1).to.be.an.instanceof(Temperatura);
-        expect(f1).to.be.an.instanceof(Farenheit);
         expect(f1).to.exist;      
     });
     it('Para el objeto Farenheit, existe un metodo toCelsius y toKelvin',function()
@@ -174,9 +167,6 @@ describe('Temperatura',function()
     });
     it('Se crea un objeto de tipo Kelvin',function()
     {
-        expect(k1).to.be.an.instanceof(Medida);
-        expect(k1).to.be.an.instanceof(Temperatura);
-        expect(k1).to.be.an.instanceof(Kelvin);
         expect(k1).to.exist;      
     });*/
     it('Para un objeto Kelvin, existe un metodo toCelsius y toFarenheit',function()
@@ -263,6 +253,13 @@ describe('Distancias',function()
     var d2 = new Kilometro(79);
     var d3 = new Metro(103);
     var d4 = new Pulgada(7.2e1);
+    beforeEach(function()
+    {
+        d1 = new Distancia(32,"km");
+        d2 = new Kilometro(79);
+        d3 = new Metro(103);
+        d4 = new Pulgada(7.2e1);
+    });
 
     describe('Construccion',function()
     {
@@ -338,6 +335,10 @@ describe('Distancias',function()
             {
                 expect(d2.toMilimetro().valor).to.be.above(75000000);
             });
+            it('79 km to p > 10000 p',function()
+            {
+                expect(d2.toPulgada().valor).to.be.above(10000);
+            });
         });
         describe('Desde Metro',function()
         {
@@ -376,13 +377,21 @@ describe('Distancias',function()
 
 //Pruebas para la clase Volumen
 describe('Volumenes',function()
-{
-    //Declaración de objetos de prueba
+{           
     var v1 = new Volumen(32,"m3");
-    var v2 = new Kilometro3(60);
-    var v3 = new Metro3(150);
-    var v4 = new Milimetro3(2.567e1);
+            var v2 = new Kilometro3(60);
+            var v3 = new Metro3(150);
+            var v4 = new Milimetro3(2.567e1);
     
+    beforeEach(function()
+    {
+            //Declaración de objetos de prueba
+             v1 = new Volumen(32,"m3");
+             v2 = new Kilometro3(60);
+             v3 = new Metro3(150);
+             v4 = new Milimetro3(2.567e1);
+    });
+
     describe('Construccion',function()
     {
         it('Se crean los objetos v1, v2, v3 y v4 de tipo Volumen, Kilometro3 , Metro3 y Milimetro3, respectivamente',function()
