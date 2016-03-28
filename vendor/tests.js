@@ -34,7 +34,8 @@ describe('Medida', function() {
         expect(medida2.valor).to.equal(45);
         expect(medida2.tipo).to.equal("km");
       });   
-     /*it('Los objetos medida1, medida2 y medida3 son instancias de Medida',function()
+
+      /*it('Los objetos medida1, medida2 y medida3 son instancias de Medida',function()
       {
         expect(medida1).to.be.an.instanceof(Medida);
         expect(medida2).to.be.an.instanceof(Medida);
@@ -133,7 +134,7 @@ describe('Temperatura',function()
   
   describe('Construccion',function()
   {
-    it('Los objetos t1,t2 y t3 son instancias de la clase Temperatura y Medida',function()
+    /*it('Los objetos t1,t2 y t3 son instancias de la clase Temperatura y Medida',function()
     {
 
         expect(t1).to.exist;
@@ -167,7 +168,7 @@ describe('Temperatura',function()
     it('Se crea un objeto de tipo Kelvin',function()
     {
         expect(k1).to.exist;      
-    });
+    });*/
     it('Para un objeto Kelvin, existe un metodo toCelsius y toFarenheit',function()
     {
         expect(k1).to.respondTo('toCelsius');
@@ -278,7 +279,7 @@ describe('Distancias',function()
             expect(d4).to.be.an.instanceof(Pulgada);
             expect(d4).to.be.an.instanceof(Distancia);
             expect(d4).to.be.an.instanceof(Medida); 
-        });*/ 
+        }); */
         it('El objeto d1 no responde a los metodos toMetro, toKilometro, toPulgada',function()
         {
             expect(d1).to.not.respondTo('toMetro');
@@ -393,13 +394,23 @@ describe('Volumenes',function()
 
     describe('Construccion',function()
     {
-        it('Se crean los objetos v1, v2, v3 y v4 de tipo Volumen, Kilometro3 , Metro3 y Milimetro3, respectivamente',function()
+        /*it('Se crean los objetos v1, v2, v3 y v4 de tipo Volumen, Kilometro3 , Metro3 y Milimetro3, respectivamente',function()
         {
             expect(v1).to.be.an.instanceof(Volumen);
-            /*expect(v2).to.exist;
-            expect(v3).to.exist;
-            expect(v4).to.exist;*/
-        });
+            expect(v1).to.be.an.instanceof(Medida);
+            
+            expect(v2).to.be.an.instanceof(Kilometro3);
+            expect(v2).to.be.an.instanceof(Volumen);
+            expect(v2).to.be.an.instanceof(Medida);
+            
+            expect(v3).to.be.an.instanceof(Metro3);
+            expect(v3).to.be.an.instanceof(Volumen);
+            expect(v3).to.be.an.instanceof(Medida);        
+            
+            expect(v4).to.be.an.instanceof(Milimetro3);
+            expect(v4).to.be.an.instanceof(Volumen);
+            expect(v4).to.be.an.instanceof(Medida); 
+        });*/
         it('El objeto v1 no responde a los metodos toMetro3, toKilometro3 y toMilimetro3',function()
         {
             expect(v1).to.not.respondTo('toMetro3');
