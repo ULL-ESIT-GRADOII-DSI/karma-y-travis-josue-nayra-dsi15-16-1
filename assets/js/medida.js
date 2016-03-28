@@ -8,7 +8,7 @@
 
   function Medida(valor,tipo)
   {
-    console.log("Accedo a clase Medida");
+    //console.log("Accedo a clase Medida");
     if(tipo)
     {
       valor = parseFloat(valor);
@@ -18,9 +18,9 @@
     else
     {
       var expresion;
-      console.log("RegExp:"+regexp);
+      //console.log("RegExp:"+regexp);
       expresion = XRegExp.exec(valor,XRegExp(regexp,'ix'));
-      console.log("Expresion:"+expresion);
+      //console.log("Expresion:"+expresion);
       if(expresion)
       {
         var numero = expresion.valor;
@@ -29,7 +29,7 @@
         tipo = tipo.toLowerCase();
         this.valor = numero;
         this.tipo = tipo;
-        console.log("Valor: " + this.valor + ", Tipo: " + this.tipo);
+        //console.log("Valor: " + this.valor + ", Tipo: " + this.tipo);
       }
     }
   }
@@ -44,7 +44,7 @@
                       '(\\s*)$';
 
     var res = XRegExp.exec(valor,XRegExp(regexp.concat(exp_regular),'ix'));
-    //console.log("Numero:"+res.valor+", tipo: "+res.tipo+", Destino:"+res.to);
+    ////console.log("Numero:"+res.valor+", tipo: "+res.tipo+", Destino:"+res.to);
     return res;
   }
 
@@ -57,13 +57,13 @@
           destino = match.to;
       tipo = tipo.toLowerCase();
       destino = destino.toLowerCase();
-      console.log("Numero:"+numero+",Tipo:"+tipo+",Destino:"+destino);
+      //console.log("Numero:"+numero+",Tipo:"+tipo+",Destino:"+destino);
       try {
         var source = new measures[tipo](numero);  // new Fahrenheit(32)
-        console.log("Source:"+source);
+        //console.log("Source:"+source);
         var target = "to"+measures[destino].name; // "toCelsius"
-        console.log("Target:"+target);
-        console.log("Return:"+source[target]().valor);
+        //console.log("Target:"+target);
+        //console.log("Return:"+source[target]().valor);
         return source[target]().valor + " "+measures[destino].name; // "0 Celsius"
       }
       catch(err) {
