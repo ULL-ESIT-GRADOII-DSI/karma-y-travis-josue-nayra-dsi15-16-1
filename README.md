@@ -7,6 +7,7 @@
 Este repositorio aloja la práctica de conversión de tipos, realizada con html, css y javascript, usando POO y haciendo uso de la herencia en javascript. 
 Se ha realizado una mejora en el código, eliminando los Switch Smell y las debilidades del mismo.
 Además, se han realizado pruebas mocha y chai para verificar el correcto funcionamiento de la aplicación.
+Se ha desarrollado un análisis de cubrimiento el código a través de blanket.js
 
 ### Desarrollo de la práctica en la rama gh-pages.
 
@@ -24,12 +25,12 @@ Además, se han realizado pruebas mocha y chai para verificar el correcto funcio
 ### Repositorios en github.io
 
 * [Repositorio de la práctica en la organización](https://github.com/ULL-ESIT-GRADOII-DSI/mocha-y-chai-josue-nayra-dsi15-16-1/)
-* [Fork del repositorio de la organización](https://github.com/JosueTC94/eliminacion-del-switch-smell-josue-nayra-dsi15-16-1)
+* [Fork del repositorio de la organización](https://github.com/alu0100406122/mocha-y-chai-josue-nayra-dsi15-16-1)
 
 ### Despligue de la práctica
 
 * [Conversor de Temperatura](https://ULL-ESIT-GRADOII-DSI.github.io/mocha-y-chai-josue-nayra-dsi15-16-1/)
-
+* [Pruebas Mocha y Chai](https://ULL-ESIT-GRADOII-DSI.github.io/mocha-y-chai-josue-nayra-dsi15-16-1/vendor/index.html)
 
 ### AUTORES: 
 ### Páginas personales de gh-pages:
