@@ -1,3 +1,7 @@
+Readme
+Páginas personales
+
+
 # Práctica 5. Mocha y Chai.
 
 ## Desarrollo de Sistemas Informáticos. ETSII ULL Grado de Informática.
@@ -26,11 +30,12 @@ Además, se han realizado pruebas mocha y chai para verificar el correcto funcio
 ### Repositorios en github.io
 
 * [Repositorio de la práctica en la organización](https://github.com/ULL-ESIT-GRADOII-DSI/mocha-y-chai-josue-nayra-dsi15-16-1/)
-* [Fork del repositorio de la organización](https://github.com/JosueTC94/eliminacion-del-switch-smell-josue-nayra-dsi15-16-1)
+* [Fork del repositorio de la organización](https://github.com/alu0100406122/mocha-y-chai-josue-nayra-dsi15-16-1)
 
 ### Despliegue de la práctica
 
 * [Conversor de Temperatura](https://ULL-ESIT-GRADOII-DSI.github.io/mocha-y-chai-josue-nayra-dsi15-16-1/)
+* [Pruebas Mocha y Chai](https://ULL-ESIT-GRADOII-DSI.github.io/mocha-y-chai-josue-nayra-dsi15-16-1/vendor/index.html)
 
 
 ### AUTORES: 
