@@ -385,9 +385,11 @@ describe('Volumenes',function()
     
     describe('Construccion',function()
     {
-        /*it('Se crean los objetos v1, v2, v3 y v4 de tipo Volumen, Kilometro3 , Metro3 y Milimetro3, respectivamente',function()
+        it('Se crean los objetos v1, v2, v3 y v4 de tipo Volumen, Kilometro3 , Metro3 y Milimetro3, respectivamente',function()
         {
-            expect(v1).to.be.an.instanceof(Volumen);
+            /*console.log(v1);
+            console.log(v1 instanceof Volumen);
+            expect(v1 instanceof Volumen).to.be.true;
             expect(v1).to.be.an.instanceof(Medida);
             
             expect(v2).to.be.an.instanceof(Kilometro3);
@@ -400,8 +402,8 @@ describe('Volumenes',function()
             
             expect(v4).to.be.an.instanceof(Milimetro3);
             expect(v4).to.be.an.instanceof(Volumen);
-            expect(v4).to.be.an.instanceof(Medida); 
-        });*/
+            expect(v4).to.be.an.instanceof(Medida); */
+        });
         it('El objeto v1 no responde a los metodos toMetro3, toKilometro3 y toMilimetro3',function()
         {
             expect(v1).to.not.respondTo('toMetro3');
@@ -439,6 +441,7 @@ describe('Volumenes',function()
             expect(v1).to.not.respondTo('toPulgada');
         });
     });
+    
     describe('Conversiones',function()
     {
         describe('Desde Kilometro3...',function()
