@@ -4,10 +4,16 @@ var expect = chai.expect;
 //Pruebas para la clase Medida.
 describe('Medida', function() {
   
-       //Declaración de objetos de prueba
-      var medida1 = new Medida(45,"km");
-      var medida2 = new Medida("45km");
-      var medida3 = new Medida("77 m"); 
+    //Declaración de objetos de prueba
+    var medida1 = new Medida(45,"km");
+    var medida2 = new Medida("45km");
+    var medida3 = new Medida("77 m"); 
+  
+    beforeEach(function(){
+        medida1 = new Medida(45,"km");
+        medida2 = new Medida("45km");
+        medida3 = new Medida("77 m");
+    })
   
     describe('Construccion',function()
     {
@@ -132,9 +138,18 @@ describe('Temperatura',function()
   var f1 = new Farenheit(20);
   var k1 = new Kelvin(400);
   
+  beforeEach(function(){
+    t1 = new Temperatura(100,"C");
+    t2 = new Temperatura(200,"F");
+    t3 = new Temperatura(300,"K");
+    c1 = new Celsius(10);
+    f1 = new Farenheit(20);
+    k1 = new Kelvin(400);
+  })
+  
   describe('Construccion',function()
   {
-    /*it('Los objetos t1,t2 y t3 son instancias de la clase Temperatura y Medida',function()
+    it('Los objetos t1,t2 y t3 son instancias de la clase Temperatura y Medida',function()
     {
 
         expect(t1).to.exist;
@@ -168,7 +183,7 @@ describe('Temperatura',function()
     it('Se crea un objeto de tipo Kelvin',function()
     {
         expect(k1).to.exist;      
-    });*/
+    });
     it('Para un objeto Kelvin, existe un metodo toCelsius y toFarenheit',function()
     {
         expect(k1).to.respondTo('toCelsius');
@@ -263,7 +278,7 @@ describe('Distancias',function()
 
     describe('Construccion',function()
     {
-        /*it('Se crean los objetos d1, d2, d3 y d4 de tipo Distancia, Kilometro , Milimetro y Pulgada, respectivamente',function()
+        it('Se crean los objetos d1, d2, d3 y d4 de tipo Distancia, Kilometro , Milimetro y Pulgada, respectivamente',function()
         {
             expect(d1).to.be.an.instanceof(Distancia);
             expect(d1).to.be.an.instanceof(Medida);
@@ -279,7 +294,7 @@ describe('Distancias',function()
             expect(d4).to.be.an.instanceof(Pulgada);
             expect(d4).to.be.an.instanceof(Distancia);
             expect(d4).to.be.an.instanceof(Medida); 
-        }); */
+        });
         it('El objeto d1 no responde a los metodos toMetro, toKilometro, toPulgada',function()
         {
             expect(d1).to.not.respondTo('toMetro');
@@ -379,9 +394,9 @@ describe('Distancias',function()
 describe('Volumenes',function()
 {           
     var v1 = new Volumen(32,"m3");
-            var v2 = new Kilometro3(60);
-            var v3 = new Metro3(150);
-            var v4 = new Milimetro3(2.567e1);
+    var v2 = new Kilometro3(60);
+    var v3 = new Metro3(150);
+    var v4 = new Milimetro3(2.567e1);
     
     beforeEach(function()
     {
