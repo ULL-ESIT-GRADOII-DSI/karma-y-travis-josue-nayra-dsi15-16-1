@@ -21,7 +21,7 @@
     measures.km = Kilometro;
     Kilometro.prototype.toMetro = function()
     {
-      console.log("Accedo al tometro auxiliar");
+      //console.log("Accedo al tometro auxiliar");
       var aux = this.valor * 1000;
       return new Metro(aux);
     }
