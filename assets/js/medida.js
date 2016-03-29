@@ -8,29 +8,37 @@
 
   function Medida(valor,tipo)
   {
-    //console.log("Accedo a clase Medida");
-    if(tipo)
+    if(!valor)
     {
-      valor = parseFloat(valor);
-      this.valor = valor || 0;
-      this.tipo  = tipo;
+      console.error("No se ha introducido valor");
+      return false;
     }
     else
     {
-      var expresion;
-      //console.log("RegExp:"+regexp);
-      expresion = XRegExp.exec(valor,XRegExp(regexp,'ix'));
-      //console.log("Expresion:"+expresion);
-      if(expresion)
+      if(tipo)
       {
-        var numero = expresion.valor;
-        numero = parseFloat(numero);
-        var tipo = expresion.tipo;
-        tipo = tipo.toLowerCase();
-        this.valor = numero;
-        this.tipo = tipo;
-        //console.log("Valor: " + this.valor + ", Tipo: " + this.tipo);
+        valor = parseFloat(valor);
+        this.valor = valor || 0;
+        this.tipo  = tipo;
+        console.log("Medida creada. Valor->"+this.valor+", Tipo->"+this.tipo);
       }
+      else
+      {
+        var expresion;
+        //console.log("RegExp:"+regexp);
+        expresion = XRegExp.exec(valor,XRegExp(regexp,'ix'));
+        //console.log("Expresion:"+expresion);
+        if(expresion)
+        {
+          var numero = expresion.valor;
+          numero = parseFloat(numero);
+          var tipo = expresion.tipo;
+          tipo = tipo.toLowerCase();
+          this.valor = numero;
+          this.tipo = tipo;
+          //console.log("Valor: " + this.valor + ", Tipo: " + this.tipo);
+        }
+      } 
     }
   }
   Medida.constructor = Medida;

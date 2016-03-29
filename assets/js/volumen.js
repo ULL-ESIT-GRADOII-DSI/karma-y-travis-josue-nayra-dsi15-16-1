@@ -4,7 +4,7 @@
     
     function Volumen(valor,tipo)
     {
-      //console.log("Accedo a clase Volumen");
+      ////console.log("Accedo a clase Volumen");
       Medida.call(this,valor,tipo);
     }
     Volumen.prototype = new Medida();

@@ -626,3 +626,64 @@ describe('Volumenes',function()
         
     });
 });
+
+describe('Tests con Sinon',function()
+{
+      var sandbox;
+      beforeEach(function() {
+        sandbox = sinon.sandbox.create();
+        sandbox.stub(window.console, "log");
+        sandbox.stub(window.console, "error");
+      });
+    
+      afterEach(function() {
+        sandbox.restore();
+      });
+    
+    describe('#Medida',function()
+    {
+        it("No se produce ningun log de error", function() {
+          (new Medida("42km"));
+          sinon.assert.notCalled(console.log);
+          sinon.assert.notCalled(console.error);
+        });
+        it("Se produce un log de error. No se ha introducido valor a la hora de construir la medida",function()
+        {   
+          (new Medida());
+          sinon.assert.notCalled(console.log);
+          sinon.assert.calledOnce(console.error);
+          sinon.assert.calledWithExactly(console.error,"No se ha introducido valor");
+        });
+        it('Se llama a un console.log indicando valor y tipo de la medida',function()
+        {
+          (new Medida("70","litros"));
+          sinon.assert.notCalled(console.error);
+          sinon.assert.calledWithExactly(console.log,"Medida creada. Valor->70, Tipo->litros");            
+        });
+    });
+    describe('#Temperatura',function()
+    {
+        it("No se produce ningun log de error", function() {
+          (new Temperatura(1,'C'));
+          sinon.assert.calledOnce(console.log);
+          sinon.assert.notCalled(console.error);
+          sinon.assert.calledWithExactly(console.log,"Medida creada. Valor->1, Tipo->C");            
+        });
+        it("Se produce un log de error. No se ha introducido valor a la hora de construir la medida",function()
+        {   
+          (new Temperatura());
+          sinon.assert.notCalled(console.log);
+          sinon.assert.calledOnce(console.error);
+          sinon.assert.calledWithExactly(console.error,"No se ha introducido ningun valor");
+        });
+    });
+    describe('#Distancia',function()
+    {
+        
+    });
+    describe('#Volumen',function()
+    {
+        
+    });
+
+});
