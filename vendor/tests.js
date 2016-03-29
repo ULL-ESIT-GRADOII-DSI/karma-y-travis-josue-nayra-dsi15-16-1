@@ -1,13 +1,19 @@
 var expect = chai.expect;
 
+
 //Pruebas para la clase Medida.
 describe('Medida', function() {
   
-  //Declaración de objetos de prueba
-  var medida1 = new Medida(45,"km");
-  var medida2 = new Medida("45km");
-  var medida3 = new Medida("77 m");
+    //Declaración de objetos de prueba
+    var medida1 = new Medida(45,"km");
+    var medida2 = new Medida("45km");
+    var medida3 = new Medida("77 m"); 
   
+    beforeEach(function(){
+        medida1 = new Medida(45,"km");
+        medida2 = new Medida("45km");
+        medida3 = new Medida("77 m");
+    })
   
     describe('Construccion',function()
     {
@@ -34,12 +40,13 @@ describe('Medida', function() {
         expect(medida2.valor).to.equal(45);
         expect(medida2.tipo).to.equal("km");
       });   
-      it('Los objetos medida1, medida2 y medida3 son instancias de Medida',function()
+
+      /*it('Los objetos medida1, medida2 y medida3 son instancias de Medida',function()
       {
         expect(medida1).to.be.an.instanceof(Medida);
         expect(medida2).to.be.an.instanceof(Medida);
         expect(medida3).to.be.an.instanceof(Medida);
-      });
+      });*/
       it('Los objetos medida1, medida2 y medida3 tienen los atributos: valor y tipo',function()
       {
         expect(medida1).to.have.property('valor');
@@ -131,28 +138,32 @@ describe('Temperatura',function()
   var f1 = new Farenheit(20);
   var k1 = new Kelvin(400);
   
+  beforeEach(function(){
+    t1 = new Temperatura(100,"C");
+    t2 = new Temperatura(200,"F");
+    t3 = new Temperatura(300,"K");
+    c1 = new Celsius(10);
+    f1 = new Farenheit(20);
+    k1 = new Kelvin(400);
+  })
+  
   describe('Construccion',function()
   {
     it('Los objetos t1,t2 y t3 son instancias de la clase Temperatura y Medida',function()
     {
-        expect(t1).to.be.an.instanceof(Medida);
-        expect(t1).to.be.an.instanceof(Temperatura);
+
         expect(t1).to.exist;
         expect(t1).to.not.be.null;
-        expect(t2).to.be.an.instanceof(Medida);
-        expect(t2).to.be.an.instanceof(Temperatura);
+
         expect(t2).to.exist;
         expect(t2).to.not.be.null;
-        expect(t3).to.be.an.instanceof(Medida);
-        expect(t3).to.be.an.instanceof(Temperatura);
+
         expect(t3).to.exist;
         expect(t3).to.not.be.null;
     });
     it('Se crea un objeto de tipo Celsius',function()
     {
-        expect(c1).to.be.an.instanceof(Medida);
-        expect(c1).to.be.an.instanceof(Temperatura);
-        expect(c1).to.be.an.instanceof(Celsius);
+
         expect(c1).to.exist;
     });
     it('Para el objeto Celsius, existe un metodo toFarenheit y toKelvin',function()
@@ -162,9 +173,6 @@ describe('Temperatura',function()
     })
     it('Se crea un objeto de tipo Farenheit',function()
     {
-        expect(f1).to.be.an.instanceof(Medida);
-        expect(f1).to.be.an.instanceof(Temperatura);
-        expect(f1).to.be.an.instanceof(Farenheit);
         expect(f1).to.exist;      
     });
     it('Para el objeto Farenheit, existe un metodo toCelsius y toKelvin',function()
@@ -174,9 +182,6 @@ describe('Temperatura',function()
     });
     it('Se crea un objeto de tipo Kelvin',function()
     {
-        expect(k1).to.be.an.instanceof(Medida);
-        expect(k1).to.be.an.instanceof(Temperatura);
-        expect(k1).to.be.an.instanceof(Kelvin);
         expect(k1).to.exist;      
     });
     it('Para un objeto Kelvin, existe un metodo toCelsius y toFarenheit',function()
@@ -263,6 +268,18 @@ describe('Distancias',function()
     var d2 = new Kilometro(79);
     var d3 = new Metro(103);
     var d4 = new Pulgada(7.2e1);
+    var d5 = new Centimetro(103);
+    var d6 = new Milimetro(50);
+    
+    beforeEach(function()
+    {
+        d1 = new Distancia(32,"km");
+        d2 = new Kilometro(79);
+        d3 = new Metro(103);
+        d4 = new Pulgada(7.2e1);
+        d5 = new Centimetro(103);
+        d6 = new Milimetro(50);
+    });
 
     describe('Construccion',function()
     {
@@ -282,7 +299,7 @@ describe('Distancias',function()
             expect(d4).to.be.an.instanceof(Pulgada);
             expect(d4).to.be.an.instanceof(Distancia);
             expect(d4).to.be.an.instanceof(Medida); 
-        }); 
+        });
         it('El objeto d1 no responde a los metodos toMetro, toKilometro, toPulgada',function()
         {
             expect(d1).to.not.respondTo('toMetro');
@@ -338,6 +355,10 @@ describe('Distancias',function()
             {
                 expect(d2.toMilimetro().valor).to.be.above(75000000);
             });
+            it('79 km to p > 10000 pulgadas',function()
+            {
+                expect(d2.toPulgada().valor).to.be.above(10000);
+            });
         });
         describe('Desde Metro',function()
         {
@@ -352,6 +373,49 @@ describe('Distancias',function()
             it('103 m to mm > 103000 milimetros',function()
             {
                 expect(d3.toMilimetro().valor).to.be.above(100000);
+            });
+            it('103 m to p > 4000 pulgadas',function()
+            {
+                expect(d3.toPulgada().valor).to.be.above(4000);
+            });
+        });
+        describe('Desde Centimetro',function()
+        {
+            it('103 cm to km =  kilometros',function()
+            {
+                expect(d5.toKilometro().valor).to.be.equal(0.0103);
+            });
+            it('103 cm to m < 1,5 metros',function()
+            {
+                expect(d5.toMetro().valor).to.be.below(1.5);
+            });
+            it('103 cm to mm > 1000 milimetros',function()
+            {
+                expect(d5.toMilimetro().valor).to.be.above(1000);
+            });
+            it('103 cm to p > 40 pulgadas',function()
+            {
+                expect(d5.toPulgada().valor).to.be.above(40);
+            });
+
+        });
+        describe('Desde Milimetro',function()
+        {
+            it('50 mm to km =  0.000103 Kilometros',function()
+            {
+                expect(d6.toKilometro().valor).to.be.equal(0.00005);
+            });
+            it('50 mm to m < 0.15 Metros',function()
+            {
+                expect(d6.toMetro().valor).to.be.below(0.15);
+            });
+            it('50 mm to cm > 0.1 centimetros',function()
+            {
+                expect(d6.toCentimetro().valor).to.be.above(0.1);
+            });
+            it('50 mm to p > 1.9 pulgadas',function()
+            {
+                expect(d6.toPulgada().valor).to.be.above(1.9);
             });
         });
         describe('Desde Pulgada',function()
@@ -370,24 +434,39 @@ describe('Distancias',function()
             {
                 expect(d4.toMilimetro().valor).to.be.above(1820);
             });
+            it('7.2e1 p to m > 1.5 m',function()
+            {
+                expect(d4.toMetro().valor).to.be.above(1.5);
+            });
         });
     });
 });
 
 //Pruebas para la clase Volumen
 describe('Volumenes',function()
-{
-    //Declaración de objetos de prueba
+{           
     var v1 = new Volumen(32,"m3");
     var v2 = new Kilometro3(60);
     var v3 = new Metro3(150);
     var v4 = new Milimetro3(2.567e1);
+    var v5 = new Centimetro3(7.2e1);
+    var v6 = new Litro(7.2e1);
     
+    beforeEach(function()
+    {
+            //Declaración de objetos de prueba
+             v1 = new Volumen(32,"m3");
+             v2 = new Kilometro3(60);
+             v3 = new Metro3(150);
+             v4 = new Milimetro3(2.567e1);
+             v5 = new Centimetro3(7.2e1);
+             v6 = new Litro(7.2e1);
+    });
+
     describe('Construccion',function()
     {
         it('Se crean los objetos v1, v2, v3 y v4 de tipo Volumen, Kilometro3 , Metro3 y Milimetro3, respectivamente',function()
         {
-            expect(v1).to.be.an.instanceof(Volumen);
             expect(v1).to.be.an.instanceof(Medida);
             
             expect(v2).to.be.an.instanceof(Kilometro3);
@@ -400,7 +479,7 @@ describe('Volumenes',function()
             
             expect(v4).to.be.an.instanceof(Milimetro3);
             expect(v4).to.be.an.instanceof(Volumen);
-            expect(v4).to.be.an.instanceof(Medida); 
+            expect(v4).to.be.an.instanceof(Medida);
         });
         it('El objeto v1 no responde a los metodos toMetro3, toKilometro3 y toMilimetro3',function()
         {
@@ -439,6 +518,7 @@ describe('Volumenes',function()
             expect(v1).to.not.respondTo('toPulgada');
         });
     });
+    
     describe('Conversiones',function()
     {
         describe('Desde Kilometro3...',function()
@@ -455,6 +535,10 @@ describe('Volumenes',function()
             {
                 expect(v2.toMilimetro3().valor).to.be.above(75000000);
             });
+            it('60 km3 to l > 6000000000 Litro',function()
+            {
+                expect(v2.toLitro().valor).to.be.above(6000000000);
+            });
         });
         describe('Desde Metro3',function()
         {
@@ -468,7 +552,11 @@ describe('Volumenes',function()
             });
             it('150 m3 to mm3 > 140000000000 Milimetro3',function()
             {
-                expect(v3.toMilimetro3().valor).to.be.above(140000000000);
+                expect(v3.toMilimetro3().valor).to.be.above(100000);
+            });
+            it('150 m3 to l > 100000 Litro',function()
+            {
+                expect(v3.toLitro().valor).to.be.above(100000);
             });
         });
         describe('Desde Milimetro3',function()
@@ -487,6 +575,54 @@ describe('Volumenes',function()
             {
                 expect(v4.toMetro3().valor).to.be.above(7.2e-9);
             });
+            it('7.2e1 mm3 to l > 0.00000072 Litro',function()
+            {
+                expect(v4.toLitro().valor).to.be.above(0.00000072);
+            });
         });
+        describe('Desde Centimetro3',function()
+        {
+            it('7.2e1 cm3 to km3 = 7.2e-14 Kilometro3',function()
+            {
+                var aux = v5.toKilometro3().valor;
+                aux = parseFloat(aux);
+                expect(aux).to.be.equal(7.2e-14);
+            });
+            it('7.2e1 cm3 to mm3 <  972000 Milimetro3',function()
+            {
+                expect(v5.toMilimetro3().valor).to.be.below(972000);
+            });
+            it('7.2e1 cm3 to m3 > 7.2e-7 Metro3',function()
+            {
+                expect(v5.toMetro3().valor).to.be.above(7.2e-9);
+            });
+            it('7.2e1 cm3 to l > 0.0002 Litro',function()
+            {
+                expect(v5.toLitro().valor).to.be.above(0.0002);
+            });
+        });
+        
+        describe('Desde Litro',function()
+        {
+            it('7.2e1 l to km3 = 7.2e-11 Kilometro3',function()
+            {
+                var aux = v6.toKilometro3().valor;
+                aux = parseFloat(aux);
+                expect(aux).to.be.equal(7.2e-11);
+            });
+            it('7.2e1 l to mm3 < 972000000 Milimetro3',function()
+            {
+                expect(v6.toMilimetro3().valor).to.be.below(972000000);
+            });
+            it('7.2e1 l to m3 > 0.00072 Metro3',function()
+            {
+                expect(v6.toMetro3().valor).to.be.above(0.00072);
+            });
+            it('7.2e1 l to cm3 > 7000 Centimetro3',function()
+            {
+                expect(v6.toCentimetro3().valor).to.be.above(7000);
+            });
+        });
+        
     });
 });

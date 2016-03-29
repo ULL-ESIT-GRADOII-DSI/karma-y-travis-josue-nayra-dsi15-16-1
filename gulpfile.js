@@ -27,7 +27,7 @@ gulp.task('minify', function () {
   //CSS de assets/
   gulp.src('assets/css/*.css')
    .pipe(minifyCSS({keepBreaks:true}))
-   .pipe(gulp.dest('./minified/assets/js/'))
+   .pipe(gulp.dest('./minified/assets/css/'))
   
   //Javascript de Vendor
   gulp.src('vendor/*.js')
