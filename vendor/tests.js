@@ -449,6 +449,8 @@ describe('Volumenes',function()
     var v2 = new Kilometro3(60);
     var v3 = new Metro3(150);
     var v4 = new Milimetro3(2.567e1);
+    var v5 = new Centimetro3(7.2e1);
+    var v6 = new Litro(7.2e1);
     
     beforeEach(function()
     {
@@ -457,15 +459,14 @@ describe('Volumenes',function()
              v2 = new Kilometro3(60);
              v3 = new Metro3(150);
              v4 = new Milimetro3(2.567e1);
+             v5 = new Centimetro3(7.2e1);
+             v6 = new Litro(7.2e1);
     });
 
     describe('Construccion',function()
     {
         it('Se crean los objetos v1, v2, v3 y v4 de tipo Volumen, Kilometro3 , Metro3 y Milimetro3, respectivamente',function()
         {
-            /*console.log(v1);
-            console.log(v1 instanceof Volumen);
-            expect(v1 instanceof Volumen).to.be.true;
             expect(v1).to.be.an.instanceof(Medida);
             
             expect(v2).to.be.an.instanceof(Kilometro3);
@@ -478,7 +479,7 @@ describe('Volumenes',function()
             
             expect(v4).to.be.an.instanceof(Milimetro3);
             expect(v4).to.be.an.instanceof(Volumen);
-            expect(v4).to.be.an.instanceof(Medida); */
+            expect(v4).to.be.an.instanceof(Medida);
         });
         it('El objeto v1 no responde a los metodos toMetro3, toKilometro3 y toMilimetro3',function()
         {
@@ -534,6 +535,10 @@ describe('Volumenes',function()
             {
                 expect(v2.toMilimetro3().valor).to.be.above(75000000);
             });
+            it('60 km3 to l > 6000000000 Litro',function()
+            {
+                expect(v2.toLitro().valor).to.be.above(6000000000);
+            });
         });
         describe('Desde Metro3',function()
         {
@@ -547,7 +552,11 @@ describe('Volumenes',function()
             });
             it('150 m3 to mm3 > 140000000000 Milimetro3',function()
             {
-                expect(v3.toMilimetro3().valor).to.be.above(140000000000);
+                expect(v3.toMilimetro3().valor).to.be.above(100000);
+            });
+            it('150 m3 to l > 100000 Litro',function()
+            {
+                expect(v3.toLitro().valor).to.be.above(100000);
             });
         });
         describe('Desde Milimetro3',function()
@@ -566,7 +575,55 @@ describe('Volumenes',function()
             {
                 expect(v4.toMetro3().valor).to.be.above(7.2e-9);
             });
+            it('7.2e1 mm3 to l > 0.00000072 Litro',function()
+            {
+                expect(v4.toLitro().valor).to.be.above(0.00000072);
+            });
         });
+        describe('Desde Centimetro3',function()
+        {
+            it('7.2e1 cm3 to km3 = 7.2e-14 Kilometro3',function()
+            {
+                var aux = v5.toKilometro3().valor;
+                aux = parseFloat(aux);
+                expect(aux).to.be.equal(7.2e-14);
+            });
+            it('7.2e1 cm3 to mm3 <  972000 Milimetro3',function()
+            {
+                expect(v5.toMilimetro3().valor).to.be.below(972000);
+            });
+            it('7.2e1 cm3 to m3 > 7.2e-7 Metro3',function()
+            {
+                expect(v5.toMetro3().valor).to.be.above(7.2e-9);
+            });
+            it('7.2e1 cm3 to l > 0.0002 Litro',function()
+            {
+                expect(v5.toLitro().valor).to.be.above(0.0002);
+            });
+        });
+        
+        describe('Desde Litro',function()
+        {
+            it('7.2e1 l to km3 = 7.2e-11 Kilometro3',function()
+            {
+                var aux = v6.toKilometro3().valor;
+                aux = parseFloat(aux);
+                expect(aux).to.be.equal(7.2e-11);
+            });
+            it('7.2e1 l to mm3 < 972000000 Milimetro3',function()
+            {
+                expect(v6.toMilimetro3().valor).to.be.below(972000000);
+            });
+            it('7.2e1 l to m3 > 0.00072 Metro3',function()
+            {
+                expect(v6.toMetro3().valor).to.be.above(0.00072);
+            });
+            it('7.2e1 l to cm3 > 7000 Centimetro3',function()
+            {
+                expect(v6.toCentimetro3().valor).to.be.above(7000);
+            });
+        });
+        
     });
 });
 
