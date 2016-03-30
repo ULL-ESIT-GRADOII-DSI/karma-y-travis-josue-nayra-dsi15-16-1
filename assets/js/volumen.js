@@ -4,8 +4,15 @@
     
     function Volumen(valor,tipo)
     {
-      ////console.log("Accedo a clase Volumen");
-      Medida.call(this,valor,tipo);
+        if(!tipo)
+        {
+            console.error("No se ha introducido ningun valor");
+        }
+        else
+        {
+            Medida.call(this,valor,tipo);   
+        }
+      
     }
     Volumen.prototype = new Medida();
     Volumen.prototype.constructor = Volumen;
