@@ -679,11 +679,35 @@ describe('Tests con Sinon',function()
     });
     describe('#Distancia',function()
     {
-        
+        it("No se produce ningun log de error", function() {
+          (new Distancia(1,'m'));
+          sinon.assert.calledOnce(console.log);
+          sinon.assert.notCalled(console.error);
+          sinon.assert.calledWithExactly(console.log,"Medida creada. Valor->1, Tipo->m");            
+        });
+        it("Se produce un log de error. No se ha introducido valor a la hora de construir la medida",function()
+        {   
+          (new Distancia());
+          sinon.assert.notCalled(console.log);
+          sinon.assert.calledOnce(console.error);
+          sinon.assert.calledWithExactly(console.error,"No se ha introducido ningun valor");
+        });
     });
     describe('#Volumen',function()
     {
-        
+        it("No se produce ningun log de error", function() {
+          (new Volumen(1,'m3'));
+          sinon.assert.calledOnce(console.log);
+          sinon.assert.notCalled(console.error);
+          sinon.assert.calledWithExactly(console.log,"Medida creada. Valor->1, Tipo->m3");            
+        });
+        it("Se produce un log de error. No se ha introducido valor a la hora de construir la medida",function()
+        {   
+          (new Volumen());
+          sinon.assert.notCalled(console.log);
+          sinon.assert.calledOnce(console.error);
+          sinon.assert.calledWithExactly(console.error,"No se ha introducido ningun valor");
+        });
     });
 
 });

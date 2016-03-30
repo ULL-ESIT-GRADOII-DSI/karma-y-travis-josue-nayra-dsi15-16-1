@@ -4,8 +4,13 @@
 
     function Distancia(valor,tipo)
     {
-      //console.log("Accedo a clase Distancia");
-      Medida.call(this,valor,tipo);
+      if (!valor){
+        console.error("No se ha introducido ningun valor");
+        return false;
+      }
+      else{
+        Medida.call(this,valor,tipo);
+      }
     }
     Distancia.prototype = new Medida();
     Distancia.prototype.constructor = Distancia;
