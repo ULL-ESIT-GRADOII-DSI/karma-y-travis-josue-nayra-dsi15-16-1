@@ -1,6 +1,3 @@
-Readme
-Páginas personales
-
 
 # Práctica 5. Mocha y Chai.
 
