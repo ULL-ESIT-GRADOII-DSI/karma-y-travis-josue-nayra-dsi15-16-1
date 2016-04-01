@@ -3,18 +3,18 @@ var expect = chai.expect;
 
 //Pruebas para la clase Medida.
 describe('Medida', function() {
-  
+
     //Declaración de objetos de prueba
     var medida1 = new Medida(45,"km");
     var medida2 = new Medida("45km");
-    var medida3 = new Medida("77 m"); 
-  
+    var medida3 = new Medida("77 m");
+
     beforeEach(function(){
         medida1 = new Medida(45,"km");
         medida2 = new Medida("45km");
         medida3 = new Medida("77 m");
     })
-  
+
     describe('Construccion',function()
     {
       it('Se crean los objetos medida1, medida2, medida3',function()
@@ -39,7 +39,7 @@ describe('Medida', function() {
         expect(medida2.tipo).to.not.be.empty;
         expect(medida2.valor).to.equal(45);
         expect(medida2.tipo).to.equal("km");
-      });   
+      });
 
       /*it('Los objetos medida1, medida2 y medida3 son instancias de Medida',function()
       {
@@ -72,11 +72,11 @@ describe('Medida', function() {
         {
             expect(medida1.valor).to.not.be.above(medida3.valor);
             expect(medida3.valor).to.be.above(medida2.valor);
-        });  
+        });
         it('El valor del objeto medida1 es menor que el valor del objeto medida3',function()
         {
             expect(medida1.valor).to.be.below(medida3.valor);
-        }); 
+        });
         it('El valor de los objetos medida1, medida2 y medida3 esta dentro del rango 40-100',function()
         {
             expect(medida1.valor).to.be.within(40,100);
@@ -89,7 +89,7 @@ describe('Medida', function() {
             expect(medida2.valor).to.not.be.within(50,100);
         });
     });
-    
+
     describe('Pruebas y casos',function()
     {
         it('Medida1, medida2 y medida3 hacen match con la regexp',function()
@@ -106,19 +106,17 @@ describe('Medida', function() {
             var aux = new Medida("50c");
             expect(aux.valor).to.be.equal(50);
             expect(aux.tipo).to.be.equal("c");
-        }); 
-        it('Devolviendo desconozco como se puede... en función convertir',function()
+        });
+        it('Devolviendo desconozco como se puede... en función convertir (Edge case)',function()
         {
             var aux = "1p to z";
             var res = Medida.match(aux);
             var tipo = res.tipo;
             var destino = res.to;
-            console.log("Tipo->"+tipo);
-            console.log("Destino->"+destino);
-            
-            expect(Medida.convertir("1p to z")).to.be.equal("Desconozco como convertir desde "+tipo+" hasta "+destino); 
+
+            expect(Medida.convertir("1p to z")).to.be.equal("Desconozco como convertir desde "+tipo+" hasta "+destino);
         });
-        it('Devolviendo Introduzca una temperatura...',function()
+        it('Devolviendo Introduzca una temperatura... (Edge case)',function()
         {
             var aux = "1z"; //No especificamos destino alguno.
             expect(Medida.convertir(aux)).to.be.equal("Introduzca una temperatura valida: 330e-1 F to C");
@@ -128,7 +126,7 @@ describe('Medida', function() {
 });
 
 //Pruebas para la clase Temperatura.
-describe('Temperatura',function()
+describe('#Temperatura',function()
 {
   //Declaración de objetos de prueba
   var t1 = new Temperatura(100,"C");
@@ -137,7 +135,7 @@ describe('Temperatura',function()
   var c1 = new Celsius(10);
   var f1 = new Farenheit(20);
   var k1 = new Kelvin(400);
-  
+
   beforeEach(function(){
     t1 = new Temperatura(100,"C");
     t2 = new Temperatura(200,"F");
@@ -146,7 +144,7 @@ describe('Temperatura',function()
     f1 = new Farenheit(20);
     k1 = new Kelvin(400);
   })
-  
+
   describe('Construccion',function()
   {
     it('Los objetos t1,t2 y t3 son instancias de la clase Temperatura y Medida',function()
@@ -173,7 +171,7 @@ describe('Temperatura',function()
     })
     it('Se crea un objeto de tipo Farenheit',function()
     {
-        expect(f1).to.exist;      
+        expect(f1).to.exist;
     });
     it('Para el objeto Farenheit, existe un metodo toCelsius y toKelvin',function()
     {
@@ -182,7 +180,7 @@ describe('Temperatura',function()
     });
     it('Se crea un objeto de tipo Kelvin',function()
     {
-        expect(k1).to.exist;      
+        expect(k1).to.exist;
     });
     it('Para un objeto Kelvin, existe un metodo toCelsius y toFarenheit',function()
     {
@@ -205,7 +203,7 @@ describe('Temperatura',function()
       it('10 C to K < 350.00 Kelvin',function()
       {
           expect(Medida.convertir('10 C to K')).to.be.below('300.00 Kelvin');
-      });      
+      });
     });
     describe('Desde Farenheit...',function()
     {
@@ -220,7 +218,7 @@ describe('Temperatura',function()
       it('20 F to K < 350.00 Kelvin',function()
       {
           expect(Medida.convertir('20 F to K')).to.be.below('350.00 Kelvin');
-      });      
+      });
     });
     describe('Desde kelvin...',function()
     {
@@ -236,9 +234,9 @@ describe('Temperatura',function()
       it('400 K to F < 350.00 Farenheit',function()
       {
           expect(Medida.convertir('400 K to F')).to.be.below('350.00 Farenheit');
-      });        
+      });
     });
-    
+
     it('Si el destino es igual que la unidad de origen, se devuelve lo mismo como por ejemplo: 32 C to C = 32 c',function()
     {
         expect(Medida.convertir('32C to C')).to.be.equal('32 c');
@@ -254,14 +252,14 @@ describe('Temperatura',function()
         expect(Medida.convertir('1.2e1F K')).to.be.equal('262.0388888888889 Kelvin')
     });
     it('En la expresion pueden ponerse espacios entre las unidades, al final y al principio: 1.2e1   F   to    K',function()
-    { 
+    {
         expect(Medida.convertir('   1.2e1   F   to    K     ')).to.be.equal('262.0388888888889 Kelvin')
     });
   });
 });
 
 //Pruebas para la clase Distancia.
-describe('Distancias',function()
+describe('#Distancias',function()
 {
     //Declaración de objetos de prueba
     var d1 = new Distancia(32,"km");
@@ -270,7 +268,7 @@ describe('Distancias',function()
     var d4 = new Pulgada(7.2e1);
     var d5 = new Centimetro(103);
     var d6 = new Milimetro(50);
-    
+
     beforeEach(function()
     {
         d1 = new Distancia(32,"km");
@@ -287,18 +285,18 @@ describe('Distancias',function()
         {
             expect(d1).to.be.an.instanceof(Distancia);
             expect(d1).to.be.an.instanceof(Medida);
-            
+
             expect(d2).to.be.an.instanceof(Kilometro);
             expect(d2).to.be.an.instanceof(Distancia);
             expect(d2).to.be.an.instanceof(Medida);
-            
+
             expect(d3).to.be.an.instanceof(Metro);
             expect(d3).to.be.an.instanceof(Distancia);
-            expect(d3).to.be.an.instanceof(Medida);        
-            
+            expect(d3).to.be.an.instanceof(Medida);
+
             expect(d4).to.be.an.instanceof(Pulgada);
             expect(d4).to.be.an.instanceof(Distancia);
-            expect(d4).to.be.an.instanceof(Medida); 
+            expect(d4).to.be.an.instanceof(Medida);
         });
         it('El objeto d1 no responde a los metodos toMetro, toKilometro, toPulgada',function()
         {
@@ -311,21 +309,21 @@ describe('Distancias',function()
             expect(d2).to.respondTo('toMetro');
             expect(d2).to.respondTo('toCentimetro');
             expect(d2).to.respondTo('toMilimetro');
-            expect(d2).to.respondTo('toPulgada');            
+            expect(d2).to.respondTo('toPulgada');
         });
         it('El objeto d3 responde a los metodos toKilometro, toCentimetro , toMilimetro y toPulgada', function()
         {
             expect(d3).to.respondTo('toKilometro');
             expect(d3).to.respondTo('toCentimetro');
             expect(d3).to.respondTo('toMilimetro');
-            expect(d3).to.respondTo('toPulgada');       
+            expect(d3).to.respondTo('toPulgada');
         });
         it('El objeto d4 responde a los metodos toKilometro, toCentimetro , toMilimetro y toMetro', function()
         {
             expect(d4).to.respondTo('toKilometro');
             expect(d4).to.respondTo('toCentimetro');
             expect(d4).to.respondTo('toMilimetro');
-            expect(d4).to.respondTo('toMetro');       
+            expect(d4).to.respondTo('toMetro');
         });
         it('Los objetos de tipo Distancia no responden a los metodos de la clase Volumen o Temperatura',function()
         {
@@ -443,15 +441,15 @@ describe('Distancias',function()
 });
 
 //Pruebas para la clase Volumen
-describe('Volumenes',function()
-{           
+describe('#Volumenes',function()
+{
     var v1 = new Volumen(32,"m3");
     var v2 = new Kilometro3(60);
     var v3 = new Metro3(150);
     var v4 = new Milimetro3(2.567e1);
     var v5 = new Centimetro3(7.2e1);
     var v6 = new Litro(7.2e1);
-    
+
     beforeEach(function()
     {
             //Declaración de objetos de prueba
@@ -468,15 +466,15 @@ describe('Volumenes',function()
         it('Se crean los objetos v1, v2, v3 y v4 de tipo Volumen, Kilometro3 , Metro3 y Milimetro3, respectivamente',function()
         {
             expect(v1).to.be.an.instanceof(Medida);
-            
+
             expect(v2).to.be.an.instanceof(Kilometro3);
             expect(v2).to.be.an.instanceof(Volumen);
             expect(v2).to.be.an.instanceof(Medida);
-            
+
             expect(v3).to.be.an.instanceof(Metro3);
             expect(v3).to.be.an.instanceof(Volumen);
-            expect(v3).to.be.an.instanceof(Medida);        
-            
+            expect(v3).to.be.an.instanceof(Medida);
+
             expect(v4).to.be.an.instanceof(Milimetro3);
             expect(v4).to.be.an.instanceof(Volumen);
             expect(v4).to.be.an.instanceof(Medida);
@@ -490,7 +488,7 @@ describe('Volumenes',function()
         it('El objeto v2 responde a los metodos toMetro3, toCentimetro3 y toMilimetro3',function()
         {
             expect(v2).to.respondTo('toMetro3');
-            expect(v2).to.respondTo('toCentimetro3');            
+            expect(v2).to.respondTo('toCentimetro3');
             expect(v2).to.respondTo('toMilimetro3');
         });
         it('El objeto v3 responde a los metodos toKilometro3, toCentimetro3 y toMilimetro3', function()
@@ -503,7 +501,7 @@ describe('Volumenes',function()
         {
             expect(v4).to.respondTo('toKilometro3');
             expect(v4).to.respondTo('toCentimetro3');
-            expect(v4).to.respondTo('toMetro3');       
+            expect(v4).to.respondTo('toMetro3');
         });
         it('Los objetos de tipo Distancia no responden a los metodos de la clase Volumen o Distancia',function()
         {
@@ -518,7 +516,7 @@ describe('Volumenes',function()
             expect(v1).to.not.respondTo('toPulgada');
         });
     });
-    
+
     describe('Conversiones',function()
     {
         describe('Desde Kilometro3...',function()
@@ -601,7 +599,7 @@ describe('Volumenes',function()
                 expect(v5.toLitro().valor).to.be.above(0.0002);
             });
         });
-        
+
         describe('Desde Litro',function()
         {
             it('7.2e1 l to km3 = 7.2e-11 Kilometro3',function()
@@ -623,7 +621,7 @@ describe('Volumenes',function()
                 expect(v6.toCentimetro3().valor).to.be.above(7000);
             });
         });
-        
+
     });
 });
 
@@ -635,11 +633,11 @@ describe('Tests con Sinon',function()
         sandbox.stub(window.console, "log");
         sandbox.stub(window.console, "error");
       });
-    
+
       afterEach(function() {
         sandbox.restore();
       });
-    
+
     describe('#Medida',function()
     {
         it("No se produce ningun log de error", function() {
@@ -648,7 +646,7 @@ describe('Tests con Sinon',function()
           sinon.assert.notCalled(console.error);
         });
         it("Se produce un log de error. No se ha introducido valor a la hora de construir la medida",function()
-        {   
+        {
           (new Medida());
           sinon.assert.notCalled(console.log);
           sinon.assert.calledOnce(console.error);
@@ -658,7 +656,7 @@ describe('Tests con Sinon',function()
         {
           (new Medida("70","litros"));
           sinon.assert.notCalled(console.error);
-          sinon.assert.calledWithExactly(console.log,"Medida creada. Valor->70, Tipo->litros");            
+          sinon.assert.calledWithExactly(console.log,"Medida creada. Valor->70, Tipo->litros");
         });
     });
     describe('#Temperatura',function()
@@ -667,10 +665,10 @@ describe('Tests con Sinon',function()
           (new Temperatura(1,'C'));
           sinon.assert.calledOnce(console.log);
           sinon.assert.notCalled(console.error);
-          sinon.assert.calledWithExactly(console.log,"Medida creada. Valor->1, Tipo->C");            
+          sinon.assert.calledWithExactly(console.log,"Medida creada. Valor->1, Tipo->C");
         });
         it("Se produce un log de error. No se ha introducido valor a la hora de construir la medida",function()
-        {   
+        {
           (new Temperatura());
           sinon.assert.notCalled(console.log);
           sinon.assert.calledOnce(console.error);
@@ -683,10 +681,10 @@ describe('Tests con Sinon',function()
           (new Distancia(1,'m'));
           sinon.assert.calledOnce(console.log);
           sinon.assert.notCalled(console.error);
-          sinon.assert.calledWithExactly(console.log,"Medida creada. Valor->1, Tipo->m");            
+          sinon.assert.calledWithExactly(console.log,"Medida creada. Valor->1, Tipo->m");
         });
         it("Se produce un log de error. No se ha introducido valor a la hora de construir la medida",function()
-        {   
+        {
           (new Distancia());
           sinon.assert.notCalled(console.log);
           sinon.assert.calledOnce(console.error);
@@ -699,10 +697,10 @@ describe('Tests con Sinon',function()
           (new Volumen(1,'m3'));
           sinon.assert.calledOnce(console.log);
           sinon.assert.notCalled(console.error);
-          sinon.assert.calledWithExactly(console.log,"Medida creada. Valor->1, Tipo->m3");            
+          sinon.assert.calledWithExactly(console.log,"Medida creada. Valor->1, Tipo->m3");
         });
         it("Se produce un log de error. No se ha introducido valor a la hora de construir la medida",function()
-        {   
+        {
           (new Volumen());
           sinon.assert.notCalled(console.log);
           sinon.assert.calledOnce(console.error);
