@@ -10,7 +10,7 @@ Además, se han realizado pruebas mocha y chai para verificar el correcto funcio
 Se ha desarrollado un análisis de cubrimiento el código a través de blanket.js
 
 ### Desarrollo de la práctica en la rama gh-pages.
-
+       
 ### Requisitos: 
 
 * Asegúrese de realizar pruebas para cada una de las clases definidas y cada uno de los métodos dentro de dichas clases.
