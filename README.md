@@ -1,3 +1,4 @@
+
 # Práctica 5. Mocha y Chai.
 
 ## Desarrollo de Sistemas Informáticos. ETSII ULL Grado de Informática.
@@ -17,20 +18,24 @@ Se ha desarrollado un análisis de cubrimiento el código a través de blanket.j
 * Haga un análisis de Cubrimiento usando blanketjs.
 * Añada un gulpfile.js con tareas minify para compactar el HTML, el CSS y el JavaScript, dejando los ficheros compactados en un subdirectorio minified/ así como una tarea clean que borre los contenidos de dicho directorio.
 
-
+ 
 ### Enlace al campus de la asignatura
 * [Desarrollo de Sistemas Informáticos](https://campusvirtual.ull.es/my/)
 
+### Enlace a la descripción de la práctica
+* [Descripción de la práctica](https://campusvirtual.ull.es/1516/mod/page/view.php?id=180154)
 
 ### Repositorios en github.io
 
 * [Repositorio de la práctica en la organización](https://github.com/ULL-ESIT-GRADOII-DSI/mocha-y-chai-josue-nayra-dsi15-16-1/)
 * [Fork del repositorio de la organización](https://github.com/alu0100406122/mocha-y-chai-josue-nayra-dsi15-16-1)
 
-### Despligue de la práctica
+### Despliegue de la práctica
 
 * [Conversor de Temperatura](https://ULL-ESIT-GRADOII-DSI.github.io/mocha-y-chai-josue-nayra-dsi15-16-1/)
 * [Pruebas Mocha y Chai](https://ULL-ESIT-GRADOII-DSI.github.io/mocha-y-chai-josue-nayra-dsi15-16-1/vendor/index.html)
+
+
 
 ### AUTORES: 
 ### Páginas personales de gh-pages:

@@ -1,7 +1,14 @@
-
+(function(exports){
+  
+    var measures = Medida.measures || {};
+  
     function Temperatura(valor,tipo)
     {
-      console.log("Accedo a clase Temperatura");
+      if(!valor)
+      {
+        console.error("No se ha introducido ningun valor");
+        return false;
+      }
       Medida.call(this,valor,tipo);
       /* tipo es opcional. Debería admitir new Medida("45.2 F") */
     }
@@ -14,11 +21,12 @@
     {
       var c_tof = 0;
       var c_tok = 0;
-      console.log("Accedo a clase Celsius");
+      // //console.log("Accedo a clase Celsius");
       Temperatura.call(this,valor,'c');
     }
     Celsius.prototype = new Temperatura;
     Celsius.prototype.constructor = Celsius;
+    measures.c = Celsius;
     Celsius.prototype.toFarenheit = function()
     {
       var c_tof = (this.valor * 9/5) + 32;
@@ -29,17 +37,20 @@
       var f_toK = (this.valor + 273.15);
       return new Kelvin(f_toK);
     }
+    
+    
   // ----------------------------------------------------- //
   
     function Farenheit(valor)
     {
       var f_toC = 0;
       var f_toK = 0;
-      console.log("Accedo a la clase Fahrenheit.");
+      // //console.log("Accedo a la clase Fahrenheit.");
       Temperatura.call(this,valor,'f');
     }
     Farenheit.prototype = new Temperatura;
     Farenheit.prototype.constructor = Farenheit;
+    measures.f = Farenheit;
     Farenheit.prototype.toCelsius = function()
     {
         var f_toC = (this.valor - 32) * 5/9;
@@ -57,11 +68,12 @@
     {
       var k_toC = 0;
       var k_toF = 0;
-      console.log("Accedo a clase Kelvin");
+      // //console.log("Accedo a clase Kelvin");
       Temperatura.call(this,valor,'k');
     }
     Kelvin.prototype = new Temperatura;
     Kelvin.prototype.constructor = Kelvin;
+    measures.k = Kelvin;
     Kelvin.prototype.toCelsius = function()
     {
       var k_toC = (this.valor - 273.15);
@@ -72,4 +84,9 @@
       var k_toF = (this.toCelsius().valor * 9/5) + 32;
       return new Farenheit(k_toF);
     }
+    exports.Temperatura = Temperatura;
+    exports.Celsius = Celsius;
+    exports.Farenheit = Farenheit;
+    exports.Kelvin = Kelvin;
     
+})(this);

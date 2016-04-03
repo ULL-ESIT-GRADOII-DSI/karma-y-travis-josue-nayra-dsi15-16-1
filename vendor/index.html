@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mocha</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="mocha.css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xregexp/2.0.0/xregexp-all-min.js"></script>
+  </head>
+  <body>                       
+    <div id="mocha"></div>
+    <div id="messages"></div>
+    <div id="fixtures"></div>
+    <script src="mocha.js"></script>
+    <script src="chai.js"></script>
+    <script src="sinon-1.17.2.js"></script>
+    <script src="blanket.js" data-cover-flags="debug" data-cover-adapter="blanket_mocha.js"></script>
+    
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/medida.js" data-cover></script>
+    <script src="../assets/js/temperature.js" data-cover></script>
+    <script src="../assets/js/distancias.js" data-cover></script>
+    <script src="../assets/js/volumen.js" data-cover></script>
+
+    <script>mocha.setup('bdd');</script>
+    <script src="tests.js"></script>
+    <script>
+      mocha.run();
+    </script>
+  </body>
+</html>
