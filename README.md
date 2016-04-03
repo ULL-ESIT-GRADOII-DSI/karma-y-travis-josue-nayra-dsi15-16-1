@@ -17,7 +17,7 @@ Además, se han realizado pruebas mocha y chai para verificar el correcto funcio
 * Haga un análisis de Cubrimiento usando blanketjs.
 * Añada un gulpfile.js con tareas minify para compactar el HTML, el CSS y el JavaScript, dejando los ficheros compactados en un subdirectorio minified/ así como una tarea clean que borre los contenidos de dicho directorio.
 
-
+ 
 ### Enlace al campus de la asignatura
 * [Desarrollo de Sistemas Informáticos](https://campusvirtual.ull.es/my/)
 
