@@ -1,5 +1,5 @@
 
-# Práctica 5. Mocha y Chai.
+# Práctica 6. Karma y Travis.
 
 ## Desarrollo de Sistemas Informáticos. ETSII ULL Grado de Informática.
 
@@ -9,25 +9,30 @@ Este repositorio aloja la práctica de conversión de tipos, realizada con html,
 Se ha realizado una mejora en el código, eliminando los Switch Smell y las debilidades del mismo.
 Además, se han realizado pruebas mocha y chai para verificar el correcto funcionamiento de la aplicación.
 
+En esta versión se ha añadido la ejecución mediante Karma y Travis.
+
 ### Desarrollo de la práctica en la rama gh-pages.
 
 ### Requisitos: 
 
-* Asegúrese de realizar pruebas para cada una de las clases definidas y cada uno de los métodos dentro de dichas clases.
-* Haga un análisis de Cubrimiento usando blanketjs.
-* Añada un gulpfile.js con tareas minify para compactar el HTML, el CSS y el JavaScript, dejando los ficheros compactados en un subdirectorio minified/ así como una tarea clean que borre los contenidos de dicho directorio.
+* Partiendo de la práctica de Mocha, Chai y Sinon añadir ejecución de las pruebas con Karma y Travis.
+* Añadir en el README.md un badge Travis indicando el estado de las pruebas en Travis y enlazando a las mismas.
+* Requisito opcional: Use el plugin gulp-gh-pages para simplificar el despliegue en gh-pages. Vea la sección El plugin gulp-gh-pages
 
+### Cubrimiento con Travis
+
+[![Build Status](https://travis-ci.org/ULL-ESIT-GRADOII-DSI/mocha-y-chai-josue-nayra-dsi15-16-1.svg?branch=master)](https://travis-ci.org/ULL-ESIT-GRADOII-DSI/mocha-y-chai-josue-nayra-dsi15-16-1)
 
 ### Enlace al campus de la asignatura
 * [Desarrollo de Sistemas Informáticos](https://campusvirtual.ull.es/my/)
 
 ### Enlace a la descripción de la práctica
-* [Descripción de la práctica](https://campusvirtual.ull.es/1516/mod/page/view.php?id=180154)
+* [Descripción de la práctica](https://campusvirtual.ull.es/1516/mod/page/view.php?id=185189)
 
 ### Repositorios en github.io
 
-* [Repositorio de la práctica en la organización](https://github.com/ULL-ESIT-GRADOII-DSI/mocha-y-chai-josue-nayra-dsi15-16-1/)
-* [Fork del repositorio de la organización](https://github.com/alu0100406122/mocha-y-chai-josue-nayra-dsi15-16-1)
+* [Repositorio de la práctica en la organización](https://github.com/ULL-ESIT-GRADOII-DSI/karma-y-travis-josue-nayra-dsi15-16-1)
+* [Fork del repositorio de la organización](https://github.com/JosueTC94/karma-y-travis-josue-nayra-dsi15-16-1)
 
 ### Despliegue de la práctica
 
