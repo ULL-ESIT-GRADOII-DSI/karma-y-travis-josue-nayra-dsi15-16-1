@@ -19,11 +19,12 @@
   "bugs": {
     "url": "https://github.com/ULL-ESIT-GRADOII-DSI/karma-y-travis-josue-nayra-dsi15-16-1/tree/gh-pages"
   },
-  "homepage": "https://github.com/aluXXXXXXX/STW03",
+  "homepage": "https://github.com/alu0100406122/karma-y-travis-josue-nayra-dsi15-16-1",
   "devDependencies": {
     "blanket": "^1.2.3",
     "chai": "^3.5.0",
     "del": "^2.2.0",
+    "dev": "^0.1.3",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
     "gulp-minify-css": "^1.2.4",
