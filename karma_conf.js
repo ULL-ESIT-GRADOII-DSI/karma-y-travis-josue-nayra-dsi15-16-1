@@ -13,9 +13,16 @@ module.exports = function(config) {
     frameworks: ['mocha'],
 
 
+    client : {
+      mocha : {
+          ui : 'bdd'
+      }
+    },
+    
     // list of files / patterns to load in the browser
     files: [
-      'vendor/*.js'
+      'vendor/*.js',
+      'vendor/index.html'
     ],
 
 
@@ -55,7 +62,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: ['Chrome','Firefox'],
 
 
     // Continuous Integration mode
