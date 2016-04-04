@@ -25,10 +25,8 @@ module.exports = function(config) {
       'https://cdnjs.cloudflare.com/ajax/libs/xregexp/2.0.0/xregexp-all-min.js',
       'assets/js/medida.js',
       'assets/js/*.js',
-   //    'vendor/mocha.css',
       'vendor/sinon-1.17.2.js',
       'vendor/*.js'
-     // 'vendor/index.html'
     ],
 
 
