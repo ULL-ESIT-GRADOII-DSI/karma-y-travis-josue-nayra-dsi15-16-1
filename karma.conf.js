@@ -25,16 +25,16 @@ module.exports = function(config) {
       'https://cdnjs.cloudflare.com/ajax/libs/xregexp/2.0.0/xregexp-all-min.js',
       'assets/js/medida.js',
       'assets/js/temperature.js',
-      'assets/js/distancias.js',
       'assets/js/volumen.js',
+      'assets/js/distancias.js',
+      'assets/js/main.js',
       'vendor/sinon.js',
       'vendor/sinon-1.17.2.js',
       'vendor/blanket.js',
       'vendor/blanket_mocha.js',
       'vendor/chai.js',
       'vendor/tests.js',
-      'vendor/mocha.js',
-      'vendor/*.js'
+      'vendor/mocha.js'
     ],
 
 
