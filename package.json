@@ -4,8 +4,7 @@
   "description": "Conversor javascript de tipos",
   "main": "conversor.js",
   "scripts": {
-    "test": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS",
-    
+    "test": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS"
   },
   "repository": {
     "type": "git",
