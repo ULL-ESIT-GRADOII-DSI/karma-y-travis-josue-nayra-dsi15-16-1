@@ -10,12 +10,31 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha'],
+    frameworks: ['mocha','sinon-chai'],
 
 
+    client : {
+      mocha : {
+          ui : 'bdd'
+      },
+      chai: { includeStack: true}
+    },
+    
     // list of files / patterns to load in the browser
     files: [
-      'vendor/*.js'
+      'https://cdnjs.cloudflare.com/ajax/libs/xregexp/2.0.0/xregexp-all-min.js',
+      'assets/js/medida.js',
+      'assets/js/temperature.js',
+      'assets/js/volumen.js',
+      'assets/js/distancias.js',
+      'assets/js/main.js',
+      'vendor/sinon.js',
+      'vendor/sinon-1.17.2.js',
+      'vendor/blanket.js',
+      'vendor/blanket_mocha.js',
+      'vendor/chai.js',
+      'vendor/tests.js',
+      'vendor/mocha.js'
     ],
 
 
@@ -55,8 +74,14 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome'],
+    browsers: ['PhantomJS'],
 
+    customLaunchers: {
+      chromeTravisCI: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
+    },
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits

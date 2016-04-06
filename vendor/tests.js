@@ -625,8 +625,11 @@ describe('#Volumenes',function()
     });
 });
 
+
+
 describe('Tests con Sinon',function()
 {
+    console.log("*****************************************"+sinon.sandbox+"***********");
       var sandbox;
       beforeEach(function() {
         sandbox = sinon.sandbox.create();
