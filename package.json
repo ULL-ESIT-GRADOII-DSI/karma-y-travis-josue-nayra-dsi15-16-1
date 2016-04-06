@@ -4,8 +4,7 @@
   "description": "Conversor javascript de tipos",
   "main": "conversor.js",
   "scripts": {
-    "test": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS",
-    
+    "test": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS"
   },
   "repository": {
     "type": "git",
@@ -14,7 +13,7 @@
   "keywords": [
     "conversor"
   ],
-  "author": "",
+  "author": "Maria Nayra Rodriguez Perez y Josue Toledo Castro",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ULL-ESIT-GRADOII-DSI/karma-y-travis-josue-nayra-dsi15-16-1/tree/gh-pages"
