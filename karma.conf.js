@@ -10,7 +10,7 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha'],
+    frameworks: ['mocha','sinon-chai'],
 
 
     client : {
@@ -24,8 +24,16 @@ module.exports = function(config) {
     files: [
       'https://cdnjs.cloudflare.com/ajax/libs/xregexp/2.0.0/xregexp-all-min.js',
       'assets/js/medida.js',
-      'assets/js/*.js',
+      'assets/js/temperature.js',
+      'assets/js/distancias.js',
+      'assets/js/volumen.js',
+      'vendor/sinon.js',
       'vendor/sinon-1.17.2.js',
+      'vendor/blanket.js',
+      'vendor/blanket_mocha.js',
+      'vendor/chai.js',
+      'vendor/tests.js',
+      'vendor/mocha.js',
       'vendor/*.js'
     ],
 

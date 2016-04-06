@@ -626,7 +626,7 @@ describe('#Volumenes',function()
 });
 
 
-/*
+
 describe('Tests con Sinon',function()
 {
     console.log("*****************************************"+sinon.sandbox+"***********");
@@ -712,4 +712,3 @@ describe('Tests con Sinon',function()
     });
 
 });
-*/
