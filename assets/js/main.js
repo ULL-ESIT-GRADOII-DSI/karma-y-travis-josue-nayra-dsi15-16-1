@@ -1,10 +1,1 @@
-(function(exports) {
-  "use strict";
-  function main() {
-      var valor     = document.getElementById('convert').value,
-          elemento  = document.getElementById('converted');
-      elemento.innerHTML = Medida.convertir(valor);
-      return false;
-  }
-  exports.main = main;
-})(this);
+!function(e){"use strict";function n(){var e=document.getElementById("convert").value,n=document.getElementById("converted");return n.innerHTML=Medida.convertir(e),!1}e.main=n}(this);
