@@ -4,7 +4,8 @@ var gulp    = require('gulp'),
     concat  = require('gulp-concat');
 var del     = require('del');
 var minifyHTML = require('gulp-minify-html');
-var minifyCSS  = require('gulp-minify-css');
+var cleanCSS = require('gulp-clean-css');
+var karma   = require('gulp-karma');
 
 gulp.task('minify', function () {
   /*gulp.src('temperature.js')
@@ -24,19 +25,22 @@ gulp.task('minify', function () {
   gulp.src('assets/js/*.js')
    .pipe(uglify())
    .pipe(gulp.dest('./minified/assets/js/'))
+   
   //CSS de assets/
   gulp.src('assets/css/*.css')
-   .pipe(minifyCSS({keepBreaks:true}))
+   .pipe(cleanCSS({compatibility: 'ie8'}))
    .pipe(gulp.dest('./minified/assets/css/'))
   
   //Javascript de Vendor
   gulp.src('vendor/*.js')
    .pipe(uglify())
    .pipe(gulp.dest('./minified/vendor/js/'))
+   
   //CSS de Vendor
   gulp.src('vendor/*.css')
-   .pipe(minifyCSS({keepBreaks:true}))
+   .pipe(cleanCSS({compatibility: 'ie8'}))
    .pipe(gulp.dest('./minified/vendor/css/'))
+   
   //HTML de Vendor
   gulp.src('vendor/*.html')
    .pipe(minifyHTML())
@@ -44,12 +48,13 @@ gulp.task('minify', function () {
   
 });
 
+//Configuración de un task para el Karma.
 gulp.task('test', function() {
   // Be sure to return the stream
   return gulp.src([])
     .pipe(karma({
       configFile: 'karma.conf.js',
-      action: 'run'
+      action: 'start'
     }))
     .on('error', function(err) {
       // Make sure failed tests cause gulp to exit non-zero
