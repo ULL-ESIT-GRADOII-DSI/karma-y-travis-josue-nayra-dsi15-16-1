@@ -20,7 +20,7 @@ En esta versión se ha añadido la ejecución mediante Karma y Travis.
 * Requisito opcional: Use el plugin gulp-gh-pages para simplificar el despliegue en gh-pages. Vea la sección El plugin gulp-gh-pages
 
 ### Cubrimiento con Travis
-[![Build Status](https://travis-ci.org/ULL-ESIT-GRADOII-DSI/karma-y-travis-josue-nayra-dsi15-16-1.svg?branch=master)](https://travis-ci.org/ULL-ESIT-GRADOII-DSI/karma-y-travis-josue-nayra-dsi15-16-1)
+[![Build Status](https://travis-ci.org/ULL-ESIT-GRADOII-DSI/karma-y-travis-josue-nayra-dsi15-16-1.svg?branch=gh-pages)](https://travis-ci.org/ULL-ESIT-GRADOII-DSI/karma-y-travis-josue-nayra-dsi15-16-1)
 
 ### Enlace al campus de la asignatura
 * [Desarrollo de Sistemas Informáticos](https://campusvirtual.ull.es/my/)
