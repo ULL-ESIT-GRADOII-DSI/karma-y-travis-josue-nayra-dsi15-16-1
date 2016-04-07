@@ -19,19 +19,30 @@ En esta versión se ha añadido la ejecución mediante Karma y Travis.
 * Añadir en el README.md un badge Travis indicando el estado de las pruebas en Travis y enlazando a las mismas.
 * Requisito opcional: Use el plugin gulp-gh-pages para simplificar el despliegue en gh-pages. Vea la sección El plugin gulp-gh-pages
 
+### Gulp:
+
+* 'gulp minify' comprime los archivos en la carpeta Minified.
+* 'gulp test' ejecuta las pruebas con Karma.
+* 'gulp deploy' simplifica el proceso de despliegue en gh-pages.
+* 'gulp clean' borra el contenido de la carpeta Minified.
+
+
 ### Cubrimiento con Travis
 [![Build Status](https://travis-ci.org/ULL-ESIT-GRADOII-DSI/karma-y-travis-josue-nayra-dsi15-16-1.svg?branch=gh-pages)](https://travis-ci.org/ULL-ESIT-GRADOII-DSI/karma-y-travis-josue-nayra-dsi15-16-1)
+
 
 ### Enlace al campus de la asignatura
 * [Desarrollo de Sistemas Informáticos](https://campusvirtual.ull.es/my/)
 
+
 ### Enlace a la descripción de la práctica
 * [Descripción de la práctica](https://campusvirtual.ull.es/1516/mod/page/view.php?id=185189)
+
 
 ### Repositorios en github.io
 
 * [Repositorio de la práctica en la organización](https://github.com/ULL-ESIT-GRADOII-DSI/karma-y-travis-josue-nayra-dsi15-16-1)
-* [Fork del repositorio de la organización](https://github.com/alu0100406122/karma-y-travis-josue-nayra-dsi15-16-1)
+
 
 ### Despliegue de la práctica
 
