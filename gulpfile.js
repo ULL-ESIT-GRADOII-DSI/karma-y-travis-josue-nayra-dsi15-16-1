@@ -6,7 +6,8 @@ var del     = require('del');
 var minifyHTML = require('gulp-minify-html');
 var cleanCSS = require('gulp-clean-css');
 var karma   = require('gulp-karma');
-
+var ghPages = require('gulp-gh-pages');
+ 
 gulp.task('minify', function () {
   /*gulp.src('temperature.js')
   .pipe(uglify())
@@ -50,7 +51,6 @@ gulp.task('minify', function () {
 
 //Configuración de un task para el Karma.
 gulp.task('test', function() {
-  // Be sure to return the stream
   return gulp.src([])
     .pipe(karma({
       configFile: 'karma.conf.js',
@@ -70,6 +70,13 @@ gulp.task('default', function() {
     }));
 });
 
+//Gulp deploy
+gulp.task('deploy', function() {
+  return gulp.src('./minified/**/*')
+    .pipe(ghPages());
+});
+
+//Gulp clean
 gulp.task('clean', function(cb) {
   del(['minified/*'], cb);
 });
