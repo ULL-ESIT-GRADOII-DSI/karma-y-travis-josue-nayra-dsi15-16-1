@@ -1,14 +1,14 @@
 {
   "name": "Conversor",
   "version": "0.0.1",
-  "description": "Conversor javascript de tipos",
+  "description": "Conversor javascript de tipos. Karma y Travis",
   "main": "conversor.js",
   "scripts": {
     "test": "./node_modules/karma/bin/karma start --single-run --browsers PhantomJS"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/aluXXXXXXX/STW03.git"
+    "url": "https://github.com/ULL-ESIT-GRADOII-DSI/karma-y-travis-josue-nayra-dsi15-16-1"
   },
   "keywords": [
     "conversor"
@@ -48,6 +48,6 @@
     "mocha": "^2.4.5",
     "mocha-sinon": "^1.1.5",
     "phantomjs-prebuilt": "^2.1.7",
-    "requirejs": "^2.2.0",
+    "requirejs": "^2.2.0"
   }
 }
