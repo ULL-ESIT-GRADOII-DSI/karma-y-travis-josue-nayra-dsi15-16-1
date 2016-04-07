@@ -1,6 +1,4 @@
 
-# Arreglando fallos... En proceso...
-
 # Práctica 6. Karma y Travis.
 
 ## Desarrollo de Sistemas Informáticos. ETSII ULL Grado de Informática.
